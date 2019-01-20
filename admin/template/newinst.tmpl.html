@@ -1,0 +1,66 @@
+<md-dialog aria-label="Modal: agregar documentacion nueva" >
+  <md-content layout="column" class="autoScroll">
+    <div style="margin: 1em" class="row">
+      <div style="margin: 1em" class="col">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Tipo de documentación</label>
+          <md-select ng-model="newinst.tipo">
+            <md-option ng-repeat="tipo in type" value="{{tipo.value}}">
+              {{tipo.name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container class="md-icon-float md-block" ng-if="newinst.tipo">
+          <label>Titulo</label>
+          <input md-maxlength="15" required name="title" ng-model="newinst.titulo" type="text">
+          <div ng-messages="instForm.titulo.$error">
+            <div ng-message="required">Ingrese un titulo.</div>
+            <div ng-message="md-maxlength">El titulo debe tener como máximo 15 caracteres.</div>
+          </div>
+          <md-icon aria-label="icon-texto" style="display:inline-block;">
+            <ion-icon name="text"></ion-icon>
+          </md-icon>
+        </md-input-container>
+        <md-input-container class="md-icon-float md-block" ng-if="newinst.tipo">
+          <label>Categoria</label>
+          <input md-maxlength="75" name="categoria" ng-model="newinst.categoria" type="text">
+          <md-icon aria-label="icon-texto" style="display:inline-block;">
+            <ion-icon name="text"></ion-icon>
+          </md-icon>
+        </md-input-container>
+        <md-input-container class="md-icon-float md-block" ng-if="newinst.tipo == 2">
+          <label>ID del video</label>
+          <input required name="path" ng-model="newinst.path" type="text">
+          <div ng-messages="instForm.path.$error">
+            <div ng-message="required">Ingrese el ID del video.</div>
+          </div>
+          <md-icon aria-label="icon-texto" style="display:inline-block;">
+            <ion-icon name="logo-youtube"></ion-icon>
+          </md-icon>
+        </md-input-container>
+        <md-input-container ng-if="newinst.tipo == 1">
+          <div class="row">
+            <input id="fileInput" aria-label="icono-escondido" name="img" class="ng-hide" type="file" ng-model="file"  fileread="file" nv-file-select uploader="uploader" ng-files="getTheFiles($files)" />
+            <md-button class="mx-auto" ng-click="eligeDoc()" id="uploadButton">
+              <md-icon aria-label="icono-documento" style="height: 100%; width: 100%">
+                <ion-icon name="document"></ion-icon>
+                <p style="float: right;margin-left: 5px;">Subir documento</p>
+              </md-icon>
+            </md-button>
+          </div>
+        </md-input-container>
+        <md-dialog-actions layout="row">
+          <md-progress-circular ng-show="activated" class="md-accent md-hue-1" md-diameter="60"></md-progress-circular>
+          <md-button ng-click="limpiar()" aria-label="Boton limpiar">
+            <md-icon aria-label="icon-warning">
+              <ion-icon class="warning" name="sync"></ion-icon>
+            </md-icon>
+          </md-button>
+          <md-button type="submit" aria-label="Boton guardar" ng-click="guardar()"><md-icon>
+            <ion-icon name="cloud-upload"></ion-icon>
+          </md-icon>  </md-button>
+        </md-dialog-actions>
+      </div>
+    </div>
+  </md-content>
+</md-dialog>
