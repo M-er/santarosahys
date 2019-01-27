@@ -1,6 +1,6 @@
 body{
-  font-family: "Raleway", Helvetica, Arial, sans-serif;
-
+  font-family: "Raleway", Helvetica, Arial, sans-serif !important;
+  font-size: 26px;
 }
 .bg-nav{
   background-color: #A3B4A2;

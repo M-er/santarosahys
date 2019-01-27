@@ -1,80 +1,62 @@
 <!DOCTYPE html>
-<html lang="es"  ng-app="serviciosApp">
+<html lang="es" ng-app="serviciosApp">
+
 <head>
 	<meta charset="utf-8">
-	<title>D&D - Consultoria Seguridad e higiene</title>
+	<title>Santa Rosa Higiene y seguridad - Consultoria Seguridad e higiene</title>
 	<meta name="author" content="Matias E. Rivas - Tres Erres Soft">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="keywords" content="Seguridad, higiene, consultoria, Santa Rosa, La Pampa, Argentina">
 	<meta name="description" content="Servicios de consultoria, seguridad e higiene en santa rosa la pampa">
-	<meta name=”robots” content="Index, Follow">
 	<!-- Favicon -->
-	<link rel="apple-touch-icon" sizes="57x57" href="../assets/favicon/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicon/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicon/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicon/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicon/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="../assets/favicon/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
-	<link rel="manifest" href="../assets/favicon/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="../assets/favicon/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
+	<link rel="shortcut icon" type="image/png" href="../assets/favicon/favicon.ico">
 	<!-- AngularMaterial CSS-->
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,900" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">	<!-- Bootstrap CSS File -->
-	<link href="../assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="../assets/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<!-- Main Stylesheet File -->
-	<link href="../assets/css/style.css" rel="stylesheet">
+	<!-- Custom Stylesheet Files -->
+	<link href="../assets/css/utils.css" rel="stylesheet">
 	<link href="../assets/css/servicios.css" rel="stylesheet">
+	<!-- Bootstrap MAIN Stylesheet File -->
+	<link href="../assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-	<header id="header"></header>
-	<!-- Servicios -->
-	<section class="servicios" id="servicios" ng-controller="serviciosCtrl" data-ng-init="init()">
-		<div class="container text-center">
-			<h2 class="lead">En D&D proveemos tanto servicios como productos de higiene y seguridad</h2>
-		</div>
-		<div class="block bg-primary block-pd-lg block-bg-overlay  h-100" data-bg-img="../assets/img/parallax-bg.jpg" data-settings='{"stellar-background-ratio": 0.6}' data-toggle="parallax-bg">
-			<div class="container">
-				<div ng-if="serviciossyh && serviciosing" class="row">
-					<div class=" col-4 " ng-repeat="servicio in serviciossyh">
-						<md-card class="contenedor">
-							<a style="cursor:pointer;" href="./contacto.html"></a>
-							<img ng-src="../assets/img/servicios/{{servicio.path}}.jpg" style="max-height:11em;" class="img-fluid tinted md-card-image" alt="Img">
-							<div class="texto-img"> <h3>{{servicio.titulo}}</h3> </div>
-						</md-card>
-					</div>
-					<div class=" col-4 " ng-repeat="servicio in serviciosing">
-						<md-card class="contenedor">
-							<a style="cursor:pointer;" href="./contacto.html"></a>
-							<img ng-src="../assets/img/servicios/{{servicio.path}}.jpg" style="max-height:11em;" class="img-fluid tinted md-card-image" alt="Img">
-							<div class="texto-img"> <h3>{{servicio.titulo}}</h3> </div>
-						</md-card>
-					</div>
-				</div>
+	<nav id="header" class="navbar navbar-expand-md navbar-dark bg-nav fixed-top"></nav>
+	<section style="padding-top: 10em;padding-bottom:5em;" class="container">
+		<div class="row align-items-center">
+			<div class="col-6 mx-auto">
+				<blockquote class="blockquote">
+					<p style="font-size: 2rem" class="mb-0">Proveemos tanto servicios como productos</p>
+					<footer class="blockquote-footer">Santa Rosa <cite title="Source Title">Higiene y Seguridad</cite></footer>
+				</blockquote>
 			</div>
 		</div>
-		<!-- /Parallax -->
 	</section>
-	<!-- /Servicios -->
-	<footer id="footer"></footer>
-	<!-- Required JavaScript Libraries -->
-	<script src="../assets/lib/jquery/jquery.min.js"></script>
-	<script src="../assets/lib/stickyjs/sticky.js"></script>
-	<script src="../assets/lib/jquery/jquery-migrate.min.js"></script>
-	<script src="../assets/lib/fa/js/fontawesome-all.min.js"></script>
-	<script src="../assets/lib/stellar/stellar.min.js"></script>
-	<script src="../assets/lib/parallax/parallax.js"></script>
+	<section class="col-12" ng-controller="serviciosCtrl" data-ng-init="init()">
+		<div class="container-fluid">
+			<div class="col-sm-6 col-md-6 col-lg-3 float-left" ng-repeat="servicio in serviciossyh">
+				<md-card class="contenedor">
+					<a style="cursor:pointer;" href="./contacto.html"></a>
+					<img ng-src="../assets/img/servicios/{{servicio.path}}.jpg" style="max-height:11em;" class="img-fluid tinted md-card-image"
+					 alt="Img">
+					<div class="texto-img">
+						<h3>{{servicio.titulo}}</h3>
+					</div>
+				</md-card>
+			</div>
+			<div class="col-sm-6 col-md-6 col-lg-3 float-left" ng-repeat="servicio in serviciosing">
+				<md-card class="contenedor">
+					<a style="cursor:pointer;" href="./contacto.html"></a>
+					<img ng-src="../assets/img/servicios/{{servicio.path}}.jpg" style="max-height:11em;" class="img-fluid tinted md-card-image"
+					 alt="Img">
+					<div class="texto-img">
+						<h3>{{servicio.titulo}}</h3>
+					</div>
+				</md-card>
+			</div>
+		</div>
+	</section>
+	<script src="../assets/vendor/jquery/jquery.min.js"></script>
+	<script src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 	<!-- Angular Material requires Angular.js Libraries -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
@@ -82,9 +64,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
 	<!-- Angular Material Library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
-	<!-- Custom JS -->
-	<script src="../app/custom.js"></script>
+	<!-- Custom JS library -->
+	<script src="../assets/js/utils.js"></script>
 	<!-- Servicios AppJS -->
 	<script src="../app/servicios.js"></script>
 </body>
+
 </html>
