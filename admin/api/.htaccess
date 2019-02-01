@@ -6,6 +6,6 @@ RewriteEngine On
 # absolute physical path to the directory that contains this htaccess file.
 #
 #RewriteBase /
-RewriteBase /dyd/admin/api/
+RewriteBase /stahys/admin/api/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [QSA,L]

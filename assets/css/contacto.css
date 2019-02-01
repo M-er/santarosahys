@@ -1,0 +1,101 @@
+#contacto {
+  background: #f7f7f7;
+  /*padding: 80px 0;*/
+}
+
+#contacto h2 {
+  font-family: "Raleway", Helvetica, Arial, sans-serif;
+  color: #199EB8;
+}
+
+#contacto .info i {
+  font-size: 32px;
+  color: #199EB8;
+  float: left;
+}
+
+#contacto .info p {
+  padding: 0 0 10px 50px;
+  line-height: 24px;
+}
+
+#contacto .form #sendmessage {
+  color: #199EB8;
+  border: 1px solid #199EB8;
+  display: none;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#contacto .form #errormessage {
+  color: red;
+  display: none;
+  border: 1px solid red;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#contacto .form #sendmessage.show, #contacto .form #errormessage.show, #contacto .form .show {
+  display: block;
+}
+
+#contacto .form .validation {
+  color: red;
+  display: none;
+  margin: 0 0 20px;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+#contacto .form input, #contacto .form textarea {
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#contacto .form button {
+  background: #199EB8;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+}
+
+#contacto .form button[type="submit"]:hover {
+  background: #23c2e1;
+}
+#contacto .form button[type="clear"]:hover {
+  background: #c3c3c3;
+}
+.bgimage {
+  width:100%;
+  height:100%;
+  background: url('../img/banner/parallax-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  background-attachment: fixed;
+}
+.bgimage h5 {
+  color:white;
+  text-shadow:2px 2px #333;
+}
+.googleMap{
+  position: relative;
+  height: 0;
+  padding-bottom: 50%;
+}
+
+.googleMap iframe{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

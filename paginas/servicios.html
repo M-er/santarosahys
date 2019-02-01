@@ -21,41 +21,34 @@
 
 <body>
 	<nav id="header" class="navbar navbar-expand-md navbar-dark bg-nav fixed-top"></nav>
-	<section style="padding-top: 10em;padding-bottom:5em;" class="container">
-		<div class="row align-items-center">
-			<div class="col-6 mx-auto">
-				<blockquote class="blockquote">
-					<p style="font-size: 2rem" class="mb-0">Proveemos tanto servicios como productos</p>
-					<footer class="blockquote-footer">Santa Rosa <cite title="Source Title">Higiene y Seguridad</cite></footer>
-				</blockquote>
+	<main role="main" ng-controller="serviciosCtrl" data-ng-init="init()">
+		<section style="margin-top: 3rem;margin-bottom:0px;" class="jumbotron text-center">
+			<div class="container">
+				<h2 class="titulo">Proveemos tanto servicios como productos de higiene y seguridad</h2>
 			</div>
-		</div>
-	</section>
-	<section class="col-12" ng-controller="serviciosCtrl" data-ng-init="init()">
-		<div class="container-fluid">
-			<div class="col-sm-6 col-md-6 col-lg-3 float-left" ng-repeat="servicio in serviciossyh">
-				<md-card class="contenedor">
-					<a style="cursor:pointer;" href="./contacto.html"></a>
-					<img ng-src="../assets/img/servicios/{{servicio.path}}.jpg" style="max-height:11em;" class="img-fluid tinted md-card-image"
-					 alt="Img">
-					<div class="texto-img">
-						<h3>{{servicio.titulo}}</h3>
+		</section>
+		<section style="background-image:url('../assets/img/banner/bannerazul.jpg');background-size: cover;">
+			<div class="album py-5">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4" ng-repeat="servicio in servicios">
+							<div class="card mb-4 shadow-sm">
+								<a href="#">
+									<img ng-src="../assets/img/servicios/{{servicio.path}}.jpg" class="img-fluid" ng-alt="{{servicio.titulo}}">
+									<div class="text-white texto-img">
+										<h3>{{servicio.titulo}}</h3>
+									</div>
+								</a>
+							</div>
+						</div>
 					</div>
-				</md-card>
+				</div>
 			</div>
-			<div class="col-sm-6 col-md-6 col-lg-3 float-left" ng-repeat="servicio in serviciosing">
-				<md-card class="contenedor">
-					<a style="cursor:pointer;" href="./contacto.html"></a>
-					<img ng-src="../assets/img/servicios/{{servicio.path}}.jpg" style="max-height:11em;" class="img-fluid tinted md-card-image"
-					 alt="Img">
-					<div class="texto-img">
-						<h3>{{servicio.titulo}}</h3>
-					</div>
-				</md-card>
-			</div>
-		</div>
-	</section>
-	<script src="../assets/vendor/jquery/jquery.min.js"></script>
+		</section>
+	</main>
+	<div id="footer"></div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
 	<script src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 	<!-- Angular Material requires Angular.js Libraries -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>

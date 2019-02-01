@@ -6,3 +6,31 @@ body{
   background-color: #A3B4A2;
   color:white;
 }
+.primario{
+  color: #3a6ab7;
+}
+
+.card {
+  position: relative;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.titulo{
+    font-style: italic;
+    font-size: 2rem;
+    font-weight: 300;
+    margin-top: 1.5em;
+}
+.texto-img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.tinted{
+  opacity: 0.8;
+}
+
