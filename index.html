@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>D&D - Consultoria Seguridad e higiene</title>
+	<title>Santa Rosa Higiene y Seguridad - Consultores</title>
 	<meta name="author" content="Matias E. Rivas - Tres Erres Soft">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="keywords" content="Seguridad, higiene, consultoria, Santa Rosa, La Pampa, Argentina">
@@ -17,11 +17,29 @@
 	<link href="./assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
 	<link href="./assets/vendor/bootstrap/full-slider.css" rel="stylesheet">
+	<!-- Loader CSS by https://twitter.com/tobiasahlin -->
+	<link href="./assets/css/loader.css" rel="stylesheet">
+	<!-- Index CSS -->
+	<link href="./assets/css/index.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-dyd">
+	<!-- Loader -->
+	<div id="loader">
+		<div class="sk-cube-grid">
+			<div class="sk-cube sk-cube1"></div>
+			<div class="sk-cube sk-cube2"></div>
+			<div class="sk-cube sk-cube3"></div>
+			<div class="sk-cube sk-cube4"></div>
+			<div class="sk-cube sk-cube5"></div>
+			<div class="sk-cube sk-cube6"></div>
+			<div class="sk-cube sk-cube7"></div>
+			<div class="sk-cube sk-cube8"></div>
+			<div class="sk-cube sk-cube9"></div>
+		</div>
+	</div>
 	<!-- Navigation -->
-	<header>
+	<header id="header" style="display:none;">
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -102,15 +120,18 @@
 			</div>
 	</header>
 	<!-- Footer -->
-	<footer class="py-5 bg-dark">
+	<footer id="footer" class="py-5 bg-dark" style="display:none;">
 		<div class="container">
 			<p class="m-0 text-center text-white">Copyright &copy; <a href="https://www.tres-erres.com.ar">3Erres Soft</a></p>
 		</div>
 		<!-- /.container -->
 	</footer>
 	<!-- Bootstrap core JavaScript -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
 	<script src="./assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+	<!-- Index JavaScript -->
+	<script src="./app/index.js"></script>
 </body>
 
 </html>

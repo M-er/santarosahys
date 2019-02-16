@@ -30,7 +30,7 @@ class Login
 	function login( $request, $response, array $args ){
 		$conn = new DBHandler();
 		$usuario = $request->getParsedBody();
-		$username = $usuario['username'];
+		$username = $usuario['user'];
 		$password = $usuario['password'];
 		$query = "Select iduser, tipouser, nombuser, contuser FROM user WHERE nombuser = '$username'";
 		$user = $conn->getOneRecord($query);

@@ -2,6 +2,16 @@ body{
   font-family: "Raleway", Helvetica, Arial, sans-serif !important;
   font-size: 26px;
 }
+.bg-dyd{
+  width: 100%;
+  height: 100%;
+  background-color: darkgray;
+  /* background-image: url('../img/loader/2.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed; */
+}
 .bg-nav{
   background-color: #A3B4A2;
   color:white;

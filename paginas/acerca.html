@@ -15,13 +15,30 @@
 	<link href="../assets/css/acerca.css" rel="stylesheet">
 	<!-- Bootstrap MAIN Stylesheet File -->
 	<link href="../assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+	<!-- Loader CSS by https://twitter.com/tobiasahlin -->
+	<link href="../assets/css/loader.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-dyd">
+	<!-- Loader -->
+	<div id="loader">
+		<div class="sk-cube-grid">
+			<div class="sk-cube sk-cube1"></div>
+			<div class="sk-cube sk-cube2"></div>
+			<div class="sk-cube sk-cube3"></div>
+			<div class="sk-cube sk-cube4"></div>
+			<div class="sk-cube sk-cube5"></div>
+			<div class="sk-cube sk-cube6"></div>
+			<div class="sk-cube sk-cube7"></div>
+			<div class="sk-cube sk-cube8"></div>
+			<div class="sk-cube sk-cube9"></div>
+		</div>
+		
+	</div>
 	<nav id="header" class="navbar navbar-expand-md navbar-dark bg-nav fixed-top"></nav>
+	
 	<!-- Acerca -->
-	<main>
-
+	<main id="main" role="main" style="display: none">
 		<section style="margin-top: 3rem;margin-bottom:0px;" class="jumbotron text-center">
 			<div class="container">
 				<h2 class="titulo">Quienes somos</h2>
@@ -68,7 +85,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="jumbotron">
+		<!-- <section class="jumbotron">
 			<div class="album py-5">
 				<div class="container">
 					<div class="row justify-content-center">
@@ -102,7 +119,7 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> -->
 		<!-- <section style="height:auto" class="block bg-primary block-pd-lg block-bg-overlay team" data-bg-img="../assets/img/parallax-bg.jpg" data-settings='{"stellar-background-ratio": 0.6}' data-toggle="parallax-bg">
 			<div class="container mb-5">
 				<div class="row">
