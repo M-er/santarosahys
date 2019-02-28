@@ -1,0 +1,51 @@
+@import 'variables';
+.fondo-login {
+        background-image: url('assets/img/fondo-web.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    mat-icon {
+        color: rgba(0,0,0,.5);
+    }
+
+    mat-card.mat-card {
+        padding: 0;
+        padding-bottom: 4em;
+    }
+
+    mat-icon[matPrefix] {
+        padding-right: 1.5em;
+    }
+
+    mat-icon[matSuffix] {
+        margin-left: -1em;
+    }
+
+    .mat-form-field-appearance-legacy div.mat-form-field-infix {
+        padding-right: 2em;
+    }
+
+    mat-card-content {
+        margin-top: 4em;
+    }
+
+    .v-align {
+        position: relative;
+        top: 50%;
+        transform: translateY(50%);
+    }
+
+    .logo {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        background-color: $primary-color;
+        img {
+            height: 64px;
+        }
+    }
+
+    a, label, img {
+        user-drag: none; 
+        user-select: none;
+    }

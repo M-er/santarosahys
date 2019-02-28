@@ -1,0 +1,25 @@
+<mat-toolbar class="mat-elevation-z6" color="primary">
+	<button class="menu-toggle" mat-icon-button (click)="toggleSidenav()">
+		<mat-icon>menu</mat-icon>
+	</button>
+	Sta Rosa H&S laboral
+	<div class="settings">
+		<button tabindex="-1" mat-icon-button [matMenuTriggerFor]="menu">
+			<i class="material-icons">notifications</i>
+		</button>
+		<button tabindex="-1" mat-icon-button [matMenuTriggerFor]="menu">
+			<i class="material-icons">event</i>
+		</button>
+		<button tabindex="-1" mat-icon-button [matMenuTriggerFor]="menu">
+			<i class="material-icons">email</i>
+		</button>
+		<button tabindex="-1" mat-icon-button [matMenuTriggerFor]="menu">
+			<i class="material-icons">person</i>
+		</button>
+	</div>
+</mat-toolbar>
+<mat-menu #menu="matMenu" overlapTrigger="false" xPosition="before">
+	<button disabled mat-menu-item>Nombre</button>
+	<button mat-menu-item>Administración</button>
+	<button (click)="logout()" mat-menu-item>Cerrar sesión</button>
+</mat-menu>

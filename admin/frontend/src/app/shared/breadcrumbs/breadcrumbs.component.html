@@ -1,0 +1,11 @@
+<mat-toolbar style="margin-bottom: 1em">
+  <mat-toolbar-row>
+    <ul id="breadcrumb">
+      <li *ngFor="let page of pages; let i = index" [ngClass]="{'active': pages.length > 0 && i === (pages.length - 1) }">
+        <a>
+          {{ page | uppercase }}
+        </a>
+      </li>
+    </ul>
+  </mat-toolbar-row>
+</mat-toolbar>

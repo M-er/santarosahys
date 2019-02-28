@@ -1,0 +1,118 @@
+<?php
+namespace App;
+/**
+*
+Clase Publicacion
+Cada publicacion estaria representada por una página.
+*
+**/
+class Publicacion
+{
+
+  protected $idpublicacion;
+  protected $titulo;
+  protected $path;
+  protected $url;
+  protected $habilitado;
+  protected $textohtml;
+  protected $user_iduser;
+
+  /**
+  * Accept an array of data matching properties of this class
+  * and create the class
+  *
+  * @param array $data The data to use to create
+  */
+  public function __construct($logger) {$this->logger = $logger;}
+
+  function newPublicacion(array $data){
+    $this->idpublicacion = data['idpublicacion'];
+    $this->titulo = data['titulo'];
+    $this->path = data['path'];
+    $this->url = data['url'];
+    $this->fecha = data['fecha'];
+    $this->habilitado = data['habilitado'];
+    $this->textohtml = data['textohtml'];
+    $this->user_iduser = data['user_iduser'];
+  }
+
+  public function get_id(){return $this->idpublicacion;}
+  public function get_titulo(){return $this->titulo;}
+  public function get_path(){return $this->path;}
+  public function get_url(){return $this->url;}
+  public function get_fecha(){return $this->fecha;}
+  public function get_habilitado(){return $this->habilitado;}
+  public function get_textohtml(){return $this->textohtml;}
+  public function get_user(){return $this->user_iduser;}
+
+  function getOne( $request,  $response, array $args ){
+    $sess = Session::loggedInfo();
+    $db = DBHandler::getHandler();
+    $query = "SELECT * FROM publicacion WHERE 1";
+    $result = $db->getOneRecord($query);
+    if($result){
+      $rta = $result;
+    }
+    return $response->withJson($rta);
+  }
+  public function guardar($request, $response, array $args){
+    $sess = Session::loggedInfo();
+    $publicacion = [];
+    $datos = array_merge($request->getQueryParams(),$request->getParsedBody());
+    $uploadedFiles = $request->getUploadedFiles();
+    $rta['err'] = 1;
+    $rta['status'] = "error";
+    $rta['msg'] = "Hubo un error";
+    if($uploadedFiles){
+      $db = DBHandler::getHandler();
+      $datos['user_iduser'] = $sess['iduser'];
+      $datos['textohtml'] = html_entity_decode(htmlentities($datos['textohtml']));
+      $result = $db->insert('publicacion', $datos);
+      if($result){
+        $pubId = $result['id'];
+        $directory = '../../../assets/publicaciones/'.$pubId.'/';
+        if (!file_exists($directory)) {
+          mkdir($directory, 0777, true);
+        }
+        $uploadedFile = $uploadedFiles['imagen'];
+        $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+        $basename = $pubId;
+        $filename = sprintf('%s.%0.8s', $basename, $extension);
+        $move = $uploadedFile->moveTo($directory.$filename);
+        if($move){
+          $rta['err'] = 0;
+          $rta['status'] = "success";
+          $rta['msg'] = "La publicacion se ha creado!";
+        }else{
+          $rta['err'] = 1;
+          $rta['status'] = "error";
+          $rta['msg'] = "Hubo un error al mover la imagen";
+        }
+      }else{
+        $rta['err'] = 2;
+        $rta['status'] = "error";
+        $rta['msg'] = "Hubo un error al insertar";
+      }
+    }
+    return $response->withJson($rta);
+  }
+  public function delete($request, $response, array $args){
+    $sess = Session::loggedInfo();
+    $db = DBHandler::getHandler();
+    $ide = $args['idpublicacion'];
+    $condition = array('idpublicacion' => $ide);
+
+    if($sess['iduser']){
+      $delete = $db->delete("publicacion", $condition);
+      $this->logger->addInfo("Eliminacion de publicacion | ".$sess["nombuser"] );
+    }
+    if($delete){
+      $rta['status'] = "success";
+      $rta['message'] = "La publicacion ha sido eliminado.";
+    }else{
+      $rta['status'] = "error";
+      $rta['message'] = "Hubo un error al eliminar el publicacion.";
+    }
+    return $response->withJson($rta);
+  }
+}

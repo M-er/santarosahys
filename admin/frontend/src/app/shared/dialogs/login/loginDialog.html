@@ -1,0 +1,26 @@
+<form (keydown.enter)="$event.preventDefault();" #sesionForm="ngForm" (ngSubmit)="onSubmit()">
+	<h2 mat-dialog-title class="center-align">Iniciar sesión</h2>
+	<mat-dialog-content>
+		<div class="loading" *ngIf="loading">
+			<mat-spinner *ngIf="loading"></mat-spinner>
+		</div>
+		<div class="row">
+			<div class="col s12 center-align">
+				<mat-form-field autofocus="true" class="login-input col s8 offset-s2" appearance="outline">
+					<mat-label>Usuario</mat-label>
+					<input hideRequiredMarker autofocus appFocusNext="1" required matInput [(ngModel)]="user" name="user" type="text" color="primary">
+				</mat-form-field>
+			</div>
+			<div class="col s12 center-align marg-top-20">
+				<mat-form-field class="login-input col s8 offset-s2" appearance="outline">
+					<mat-label>Contraseña</mat-label>
+					<input hideRequiredMarker appFocusNext="2" required matInput [(ngModel)]="password" name="password" type="password" color="primary">
+				</mat-form-field>
+			</div>
+		</div>
+	</mat-dialog-content>
+
+	<mat-dialog-actions>
+	  <button appFocusNext="3" mat-raised-button color="primary" [disabled]="!sesionForm.form.valid" (click)="onSubmit()" (keydown.enter)="onSubmit()">Ingresar</button>
+	</mat-dialog-actions>
+</form>

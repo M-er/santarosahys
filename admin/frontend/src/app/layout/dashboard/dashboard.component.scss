@@ -1,0 +1,17 @@
+mat-toolbar {
+	position: fixed;
+	top: 0;
+	z-index: 1010;
+}
+
+mat-toolbar span {
+	margin-left: 20px;
+}
+
+.container-fluid {
+	margin: 2em;
+}
+
+.spacer {
+	flex: 1 1 auto;
+}

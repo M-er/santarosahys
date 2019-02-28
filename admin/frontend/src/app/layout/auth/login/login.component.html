@@ -1,0 +1,34 @@
+<div class="container-fluid full-page fondo-login">
+	<div class="row">
+		<div class="col s10 offset-s1 l6 offset-l3 m8 offset-m2">
+			<form (keydown.enter)="$event.preventDefault()" #loginForm="ngForm" (ngSubmit)="login()">
+				<mat-card class="v-align">
+					<div class="center logo">
+						<h4>Santa Rosa Higiene y Seguridad </h4>
+					</div>
+					<mat-card-content>
+						<div class="row">
+							<mat-form-field hideRequiredMarker class="col s10 offset-s1 l8 offset-l2">
+								<input autofocus trFocusNext="1" name="usuario" matInput [(ngModel)]="user" placeholder="Nombre de usuario" required>
+								<mat-icon matPrefix >person</mat-icon>
+							</mat-form-field>
+						</div>
+						<div class="row">
+							<mat-form-field hideRequiredMarker class="col s10 offset-s1 l8 offset-l2">
+								<mat-icon matPrefix>lock</mat-icon>
+								<input trFocusNext="2" matInput [(ngModel)]="password" name="password" placeholder="Contraseña" [type]="!show ? 'password' : 'text'" required>
+								<mat-icon class="action" matSuffix (click)="show = !show">{{!show ? 'visibility_off' : 'visibility'}}</mat-icon>
+							</mat-form-field>
+							<div class="col s10 offset-s2">
+								<a>Olvidé mi contraseña</a>
+							</div>
+						</div>
+					</mat-card-content>
+					<mat-card-actions class="center">
+						<button trFocusNext="3" [disabled]="!loginForm.form.valid" color="primary" (click)="login()" (keyup.enter)="login()" mat-raised-button>Iniciar sesión</button>
+					</mat-card-actions>
+				</mat-card>
+			</form>
+		</div>
+	</div>
+</div>

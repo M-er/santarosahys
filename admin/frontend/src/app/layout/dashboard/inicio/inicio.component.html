@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-content>
+        <tr-breadcrumbs [pages]="path"></tr-breadcrumbs>
+        <div class="row center-align">
+            <div class="col s12">
+                <button mat-raised-button color="primary" (click)="init()">Iniciar</button>
+                <button mat-raised-button color="primary" (click)="addPoint()">Agregar punto</button>
+                <button mat-raised-button color="primary" (click)="removePoint()">Remover punto</button>
+            </div>
+
+        </div>
+        <div class="row center-align">
+            <div class="center-align col s12">
+                <div [chart]="chart"></div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

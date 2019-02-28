@@ -1,0 +1,30 @@
+@import 'materialize-modified';
+@import 'theme';
+
+.mat-drawer-inner-container::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+}
+	
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+    background: transparentize($color: $primary-color, $amount: 0.25);
+}
+
+.full-page {
+    height: 100vh;
+    widows: 100vw;
+    overflow: hidden;
+}
+
+mat-icon.action {
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
+    color: $primary-color;
+}
+
+mat-icon {
+    user-select: none;
+}

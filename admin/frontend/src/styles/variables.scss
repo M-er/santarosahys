@@ -1,0 +1,67 @@
+@import '~@angular/material/theming';
+
+/**
+$mat-red
+$mat-pink
+$mat-purple
+$mat-deep-purple
+$mat-indigo
+$mat-blue
+$mat-light-blue
+$mat-cyan
+$mat-teal
+$mat-green
+$mat-light-green
+$mat-lime
+$mat-yellow
+$mat-amber
+$mat-orange
+$mat-deep-orange
+$mat-brown
+$mat-grey
+$mat-gray
+$mat-blue-grey
+*/
+
+$mat-syh: (
+  50: #f4f6f4,
+  100: #e3e9e3,
+  200: #d1dad1,
+  300: #bfcbbe,
+  400: #b1bfb0,
+  500: #a3b4a2,
+  600: #9bad9a,
+  700: #91a490,
+  800: #889c86,
+  900: #778c75,
+  A100: #ffffff,
+  A200: #e0fdde,
+  A400: #b0ffa9,
+  A700: #99ff90,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+
+
+$primary: $mat-syh;
+$secondary: $mat-indigo;
+
+
+$primary-color: map-get($primary, 500);
+$secondary-color: map-get($secondary, 500);
+$primary-text-color: white;

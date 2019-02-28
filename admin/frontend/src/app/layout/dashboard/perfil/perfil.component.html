@@ -1,0 +1,52 @@
+<mat-card>
+  <mat-card-content>
+    <tr-breadcrumbs [pages]="path"></tr-breadcrumbs>
+    <div class="row">
+      <div class="col s8 m2 l4">
+        <mat-card class="example-card center-align">
+          <img mat-card-image *ngIf="!imagen" class="img-perfil" [src]="usuario.path">
+          <ng-container *ngIf="imagen">
+            <img mat-card-image class="img-perfil" src="{{ imagen }}" (click)="clickImagen($event)">
+          </ng-container>
+          <mat-card-actions>
+            <input type="file" #imagenInput (change)="cargaImagen($event)">
+            <ng-container *ngIf="!imagen">
+              <button title="Cargar imagen" color="primary" (click)="clickImagen(imagenInput)" mat-raised-button>
+                <mat-icon>cloud_upload</mat-icon>
+                <span>Nueva imagen</span>
+              </button>
+            </ng-container>
+            <button *ngIf="imagen" title="Cambiar imagen" color="secondary" (click)="clickImagen($event)"
+              mat-raised-button>Volver a la anterior</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col s8 m8 l8">
+        <div class="row center-align">
+          <mat-form-field class="col s12 m6">
+            <input trFocusNext="1" matInput [(ngModel)]="usuario.nombuser" name="nombuser" placeholder="Nombre de usuario">
+          </mat-form-field>
+          <mat-form-field class="col s12 m6">
+            <input trFocusNext="2" matInput [(ngModel)]="usuario.contuserN" name="contuser" placeholder="Contraseña nueva de usuario">
+          </mat-form-field>
+          <mat-form-field class="col s12 m6">
+            <mat-select trFocusNext="3" [(ngModel)]="usuario.tipouser" name="tipouser" placeholder="Tipo de usuario">
+              <mat-option [value]="1">
+                Admin
+              </mat-option>
+              <mat-option [value]="2">
+                Cliente
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="row center-align">
+          <div class="col s6">
+            <button trFocusNext="4" (click)="limpiar()" mat-button>Cancelar</button>
+            <button trFocusNext="5" [disabled]="usuario.nombuser === ''" color="primary" (click)="guardar()" mat-raised-button>Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

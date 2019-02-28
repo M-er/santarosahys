@@ -1,0 +1,82 @@
+<h1 mat-dialog-title>Creacion de publicacion</h1>
+<div class="row">
+<mat-slide-toggle color="primary" [(ngModel)]="habilitado" >Visible</mat-slide-toggle>
+</div>
+<div style="padding: 1em;" mat-dialog-content>
+    <mat-accordion class="example-headers-align">
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Titulo
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{tituloThumb}}
+                    <mat-icon>chrome_reader_mode</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="row center-align">
+                <mat-form-field style="width:100%;">
+                    <input matInput [(ngModel)]="titulo" placeholder="Titulo de la publicacion">
+                </mat-form-field>
+            </div>
+            <mat-action-row>
+                <button mat-button color="primary" (click)="nextStep()">Ir a agregar imágen</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Imágen
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{imagenThumb}}
+                    <mat-icon>insert_photo</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="row center-align">
+                <mat-card class="example-card center-align">
+                    <img mat-card-image *ngIf="!imagen" class="img-noticia" [src]="'assets/' + path">
+                    <ng-container *ngIf="imagen">
+                        <img mat-card-image class="img-noticia" src="{{ imagen }}" (click)="clickImagen($event)">
+                    </ng-container>
+                    <mat-card-actions>
+                        <input type="file" #imagenInput (change)="cargaImagen($event)">
+                        <ng-container *ngIf="!imagen">
+                            <button title="Cargar imagen" color="primary" (click)="clickImagen(imagenInput)"
+                                mat-raised-button>
+                                <mat-icon>cloud_upload</mat-icon>
+                                <span> Agregar Imágen</span>
+                            </button>
+                        </ng-container>
+                        <button *ngIf="imagen" title="Cambiar imagen" color="secondary" (click)="clickImagen($event)"
+                            mat-raised-button>Volver
+                            a la imágen previa </button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+            <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Volver a titulo</button>
+                <button mat-button color="primary" (click)="nextStep()">Ir a agregar texto</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Publicacion
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{publicacionThumb}}
+                    <mat-icon>description</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <angular-editor [(ngModel)]="textohtml"></angular-editor>
+            <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Volver a imágen</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<div mat-dialog-actions>
+    <button mat-button color="primary" (click)="cancelar()">Cancelar</button>
+    <button mat-button color="accent" (click)="guardar()" cdkFocusInitial>Guardar</button>
+</div>
