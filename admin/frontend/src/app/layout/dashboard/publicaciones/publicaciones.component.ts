@@ -7,10 +7,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '@env';
 
-export interface DialogData {
-  respuesta: string;
-}
-
 @Component({
   selector: 'tr-publicaciones',
   templateUrl: './publicaciones.component.html',
@@ -25,9 +21,10 @@ export class PublicacionesComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private httpService: HttpService,
     private utilService: UtilService,
     public dialog: MatDialog
-  ) { }
+    ) { }
 
   ngOnInit() {
     this.path = this.router.url.split('/').splice(1);
@@ -39,7 +36,7 @@ export class PublicacionesComponent implements OnInit {
       columnas: [
         { ancho: 10, def: 'idpublicacion', nombre: 'Identificador', tipo: 'texto' },
         { ancho: 20, def: 'titulo', nombre: 'Titulo', tipo: 'texto' },
-        { ancho: 10, def: 'path', nombre: 'Path', tipo: 'imagen' },
+        { ancho: 10, def: 'path', nombre: 'Imagen', tipo: 'imagen' },
         { ancho: 20, def: 'habilitado', nombre: 'Habilitado', tipo: 'texto' },
         { ancho: 10, def: 'fecha', nombre: 'Fecha', tipo: 'texto' },
         { ancho: 10, def: 'user_iduser', nombre: 'Usuario creador', tipo: 'texto' },
@@ -47,13 +44,13 @@ export class PublicacionesComponent implements OnInit {
       ],
       url: 'hojeador/publicaciones',
       acciones: [
-        { title: () => 'Editar', icon: () => 'edit', handler: (element) => { this.editar(element) } }
+        { title: () => 'Editar', icon: () => 'edit', handler: (element) => { this.editar(element) } },
+        { title: () => 'Eliminar', icon: () => 'delete', handler: (element) => { this.eliminar(element) } }
       ],
-      modificarDatos: (datos)=>{
+      modificarDatos: (datos) => {
         datos.forEach(element => {
           element.path = environment.publicacionesUrl + element.idpublicacion + '/' + element.idpublicacion + '.jpg';
-          console.log(element.habilitado);
-          element.habilitado = (element.habilitado == '1' || element.habilitado == 'Habilitada')?'Habilitada':'No habilitada';
+          element.habilitado = (element.habilitado == '1' || element.habilitado == 'Habilitada') ? 'Habilitada' : 'No habilitada';
         });
         return datos;
       }
@@ -63,28 +60,34 @@ export class PublicacionesComponent implements OnInit {
   limpiar() {
     console.log("limpieza")
   }
-  nueva() {
+  eliminar(elemento) {
+    this.httpService.post('abm/publicacion/eliminar',elemento).then((data) => {
+      this.utilService.notification(data.msg);
+      this.init();
+    });
+  }
+  nueva(datos) {
+    if(!datos){
+      datos = {};
+    }
     this.limpiar();
     this.editando = !this.editando;
     const dialogRef = this.dialog.open(DialogoNoticia, {
       width: '750px',
-      data: {}
+      data: datos
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-
+      this.init();
       this.editando = false;
     });
   }
   editar(elemento) {
-    this.editando = true;
-    console.log(elemento)
+    this.nueva(elemento);
   }
 }
-
 @Component({
-  selector: 'dialog-overview-example-dialog',
+  selector: 'dialog-publicacion',
   templateUrl: 'dialogo-publicacion.html',
   styleUrls: ['./publicaciones.component.scss']
 
@@ -99,6 +102,7 @@ export class DialogoNoticia {
   textohtml = null;
   habilitado = true;
   idpublicacion = 0;
+  cambiaImg = false;
   imagen = null;
   imagenU = null;
   tituloThumb = 'Con el cual los lectores identificarán la publicacion';
@@ -110,34 +114,45 @@ export class DialogoNoticia {
     private httpService: HttpService,
     private http: HttpClient,
     public dialogRef: MatDialogRef<DialogoNoticia>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) { 
+      if(data){
+        this.idpublicacion = data.idpublicacion;
+        this.titulo = data.titulo;
+        this.imagen = data.path;
+        this.textohtml = data.textohtml;
+        this.habilitado = data.habilitado;
+      }
+      console.log(data)
+    }
 
   cancelar() {
     this.dialogRef.close();
   }
   guardar() {
     var formData = new FormData();
+    formData.append('idpublicacion', this.idpublicacion);
     formData.append('titulo', this.titulo);
     formData.append('textohtml', this.textohtml);
-    formData.append('habilitado', this.habilitado?'1':'0');
-    formData.append('imagen', this.imagenU, this.imagenU.name);
+    formData.append('habilitado', this.habilitado ? '1' : '0');
+    if(this.cambiaImg)
+      formData.append('imagen', this.imagenU, this.imagenU.name);
 
     this.httpService.post('abm/publicacion', formData).then((data) => {
-      if(data.err){
+      if (data.err) {
         this.data.respuesta = "Error";
-      }else{
+      } else {
         this.data.respuesta = data.msg;
       }
       this.dialogRef.close();
     });
   }
-  
-  setStep(index: number) {this.step = index;}
-  nextStep() {this.step++;}
-  prevStep() {this.step--;}
+
+  setStep(index: number) { this.step = index; }
+  nextStep() { this.step++; }
+  prevStep() { this.step--; }
 
   clickImagen(imagenInput) {
-    if (this.imagen === null) {imagenInput.click();} else {this.imagen = null;}
+    if (this.imagen === null) { imagenInput.click(); this.cambiaImg = true;} else { this.imagen = null; }
   }
 
   cargaImagen(ev) {

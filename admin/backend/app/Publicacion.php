@@ -57,6 +57,7 @@ class Publicacion
   }
   public function guardar($request, $response, array $args){
     $sess = Session::loggedInfo();
+    $db = DBHandler::getHandler();
     $publicacion = [];
     $datos = array_merge($request->getQueryParams(),$request->getParsedBody());
     $uploadedFiles = $request->getUploadedFiles();
@@ -64,18 +65,26 @@ class Publicacion
     $rta['status'] = "error";
     $rta['msg'] = "Hubo un error";
     if($uploadedFiles){
-      $db = DBHandler::getHandler();
       $datos['user_iduser'] = $sess['iduser'];
       $datos['textohtml'] = html_entity_decode(htmlentities($datos['textohtml']));
-      $result = $db->insert('publicacion', $datos);
-      if($result){
+      if($datos['idpublicacion'] != 0){
+        $condition = array('idpublicacion' => $datos['idpublicacion']);
+        $pubId = $datos['idpublicacion'];
+        unset($datos['idpublicacion']);
+        $result = $db->update('publicacion', $datos, $condition);
+      }else{
+        unset($datos['idpublicacion']);
+        $result = $db->insert('publicacion', $datos);
         $pubId = $result['id'];
+      }
+      if($result){
         $directory = '../../../assets/publicaciones/'.$pubId.'/';
         if (!file_exists($directory)) {
           mkdir($directory, 0777, true);
         }
         $uploadedFile = $uploadedFiles['imagen'];
-        $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+        // $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+        $extension = 'jpg';
         $basename = $pubId;
         $filename = sprintf('%s.%0.8s', $basename, $extension);
         $move = $uploadedFile->moveTo($directory.$filename);
@@ -93,25 +102,43 @@ class Publicacion
         $rta['status'] = "error";
         $rta['msg'] = "Hubo un error al insertar";
       }
+    }else{
+      if($datos['idpublicacion']){
+        $condition = array('idpublicacion' => $datos['idpublicacion']);
+
+        unset($datos['idpublicacion']);
+        $result = $db->update('publicacion', $datos, $condition);
+        if($result){
+          $rta['err'] = 0;
+          $rta['status'] = "success";
+          $rta['msg'] = "La publicacion se ha actualizado";
+        }else{
+          $rta['err'] = 1;
+          $rta['status'] = "error";
+          $rta['msg'] = "Hubo un error al actualizar la publicacion";
+        }
+      }
     }
     return $response->withJson($rta);
   }
-  public function delete($request, $response, array $args){
+  public function eliminar($request, $response, array $args){
     $sess = Session::loggedInfo();
     $db = DBHandler::getHandler();
-    $ide = $args['idpublicacion'];
+    $datos = array_merge($request->getQueryParams(),$request->getParsedBody());
+    $ide = $datos['idpublicacion'];
     $condition = array('idpublicacion' => $ide);
-
     if($sess['iduser']){
       $delete = $db->delete("publicacion", $condition);
       $this->logger->addInfo("Eliminacion de publicacion | ".$sess["nombuser"] );
     }
-    if($delete){
+    if($delete){  $rta['err'] = 1;
+      $rta['err'] = "0";
       $rta['status'] = "success";
-      $rta['message'] = "La publicacion ha sido eliminado.";
+      $rta['msg'] = "La publicacion ha sido eliminado.";
     }else{
+      $rta['err'] = 1;
       $rta['status'] = "error";
-      $rta['message'] = "Hubo un error al eliminar el publicacion.";
+      $rta['msg'] = "Hubo un error al eliminar el publicacion.";
     }
     return $response->withJson($rta);
   }

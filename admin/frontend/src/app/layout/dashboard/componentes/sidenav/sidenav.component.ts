@@ -27,7 +27,7 @@ export class SidenavComponent implements OnInit {
 		{
 			title: 'Administracion',
 			children: [
-				{ url: '/perfil', title: 'perfil', icon: 'account_circle' },
+				// { url: '/perfil', title: 'perfil', icon: 'account_circle' },
 				{ url: '/usuarios', title: 'usuarios', icon: 'supervised_user_circle' },
 				{ url: '/institucional', title: 'institucional', icon: 'book' },
 				{ url: '/productos', title: 'productos', icon: 'shopping_cart' },

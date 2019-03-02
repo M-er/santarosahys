@@ -6,7 +6,9 @@ export const environment = {
     production: false,
     baseUrl: 'http://localhost/stahys/admin/backend/public/',
     publicacionesUrl: 'http://localhost/stahys/assets/publicaciones/',
-    usuariosUrl: 'http://localhost/stahys/assets/img/usuarios/'
+    usuariosUrl: 'http://localhost/stahys/assets/img/usuarios/',
+    imgUrl: 'http://localhost/stahys/admin/frontend/src/assets/img/',
+    productosUrl: 'http://localhost/stahys/assets/productos/'
 };
 
 /*

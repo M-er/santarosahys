@@ -80,6 +80,17 @@ export class HttpService {
 		}
 	}
 
+	async delete(url: string, datos: any = null) {
+		const options = datos ? this.paramsRequest(datos) : urlOptions;
+		try {
+			const res = await this.http.delete<any>(this.baseUrl + url, options).toPromise();
+			return res;
+		} catch (error) {
+			this.error(error);
+			return null;
+		}
+	}
+
 	async post(url: string, datos: any = null) {
 		try {
 			const res = await this.http.post<any>(this.baseUrl + url, datos, urlOptions).toPromise();

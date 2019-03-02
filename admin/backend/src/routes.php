@@ -7,9 +7,10 @@ $app->get('/logout/', "logueador:logout");
 $app->group('/abm', function () use ($app) {
     $app->post('/cursos', 'curso:guardar');
     $app->post('/usuarios', 'usuario:guardar');
-    $app->post('/productos', 'producto:guardar');
+    $app->post('/producto', 'producto:guardar');
     $app->post('/servicios', 'servicio:guardar');
     $app->post('/publicacion', 'publicacion:guardar');
+    $app->post('/publicacion/eliminar', 'publicacion:eliminar');
     $app->post('/institucional', 'institucional:guardar');
 });
 

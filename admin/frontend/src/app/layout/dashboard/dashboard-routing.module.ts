@@ -21,10 +21,10 @@ const routes: Routes = [
 				path: 'acciones', 
 				loadChildren: 'app/layout/dashboard/acciones/acciones.module#AccionesModule'
 			},
-			{
-				path: 'perfil', 
-				loadChildren: 'app/layout/dashboard/perfil/perfil.module#PerfilModule'
-			},
+			// {
+			// 	path: 'perfil', 
+			// 	loadChildren: 'app/layout/dashboard/perfil/perfil.module#PerfilModule'
+			// },
 			{
 				path: 'usuarios', 
 				loadChildren: 'app/layout/dashboard/usuarios/usuarios.module#UsuariosModule'
