@@ -4,11 +4,13 @@
 
 export const environment = {
     production: false,
-    baseUrl: 'http://localhost/stahys/admin/backend/public/',
-    publicacionesUrl: 'http://localhost/stahys/assets/publicaciones/',
-    usuariosUrl: 'http://localhost/stahys/assets/img/usuarios/',
-    imgUrl: 'http://localhost/stahys/admin/frontend/src/assets/img/',
-    productosUrl: 'http://localhost/stahys/assets/productos/'
+    baseUrl: 'http://localhost/santarosahys/admin/backend/public/index.php/',
+    publicacionesUrl: 'http://localhost/santarosahys/assets/publicaciones/',
+    usuariosUrl: 'http://localhost/santarosahys/assets/img/usuarios/',
+    imgUrl: 'http://localhost/santarosahys/admin/frontend/src/assets/img/',
+    productosUrl: 'http://localhost/santarosahys/assets/productos/',
+    serviciosUrl: 'http://localhost/santarosahys/assets/servicios/',
+    cursosUrl: 'http://localhost/santarosahys/assets/cursos/',
 };
 
 /*

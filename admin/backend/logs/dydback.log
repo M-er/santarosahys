@@ -30,3 +30,9 @@
 [2019-02-28 16:18:01] dyd-backend-app.INFO: Eliminacion de publicacion | mrivas [] {"uid":"26b8e5f"}
 [2019-02-28 16:22:30] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"cb50616"}
 [2019-03-01 07:58:50] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"60bb53a"}
+[2019-03-02 08:04:39] dyd-backend-app.INFO: Saludo matt [] {"uid":"59ac70e"}
+[2019-03-02 08:05:08] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"59fbdc0"}
+[2019-03-02 08:45:33] dyd-backend-app.INFO: Eliminacion de curso | mrivas [] {"uid":"652322a"}
+[2019-03-02 08:46:55] dyd-backend-app.INFO: Eliminacion de curso | mrivas [] {"uid":"e8d832b"}
+[2019-03-02 09:02:41] dyd-backend-app.INFO: Eliminacion de servicio | mrivas [] {"uid":"1dbd90f"}
+[2019-03-02 09:04:34] dyd-backend-app.INFO: Eliminacion de servicio | mrivas [] {"uid":"9bc7783"}

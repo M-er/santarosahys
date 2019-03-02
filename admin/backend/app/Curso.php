@@ -11,8 +11,6 @@ class Curso
 
   protected $idcurso;
   protected $titulo;
-  protected $path;
-  protected $url;
   protected $habilitado;
   protected $textohtml;
   protected $user_iduser;
@@ -28,8 +26,6 @@ class Curso
   function newcurso(array $data){
     $this->idcurso = data['idcurso'];
     $this->titulo = data['titulo'];
-    $this->path = data['path'];
-    $this->url = data['url'];
     $this->habilitado = data['habilitado'];
     $this->textohtml = data['textohtml'];
     $this->user_iduser = data['user_iduser'];
@@ -53,23 +49,90 @@ class Curso
     }
     return $response->withJson($rta);
   }
-  public function save($request, $response, array $args){}
-  public function delete($request, $response, array $args){
+  public function guardar($request, $response, array $args){
     $sess = Session::loggedInfo();
     $db = DBHandler::getHandler();
-    $ide = $args['idcurso'];
-    $condition = array('idcurso' => $ide);
+    $curso = [];
+    $datos = array_merge($request->getQueryParams(),$request->getParsedBody());
+    $uploadedFiles = $request->getUploadedFiles();
+    $rta['err'] = 1;
+    $rta['status'] = "error";
+    $rta['msg'] = "Hubo un error";
+    if($uploadedFiles){
+      $datos['user_iduser'] = $sess['iduser'];
+      $datos['textohtml'] = html_entity_decode(htmlentities($datos['textohtml']));
+      if($datos['idcurso'] != 0){
+        $condition = array('idcurso' => $datos['idcurso']);
+        $pubId = $datos['idcurso'];
+        unset($datos['idcurso']);
+        $result = $db->update('curso', $datos, $condition);
+      }else{
+        unset($datos['idcurso']);
+        $result = $db->insert('curso', $datos);
+        $pubId = $result['id'];
+      }
+      if($result){
+        $directory = '../../../assets/cursos/'.$pubId.'/';
+        if (!file_exists($directory)) {
+          mkdir($directory, 0777, true);
+        }
+        $uploadedFile = $uploadedFiles['imagen'];
+        // $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+        $extension = 'jpg';
+        $basename = $pubId;
+        $filename = sprintf('%s.%0.8s', $basename, $extension);
+        $move = $uploadedFile->moveTo($directory.$filename);
+        if($move){
+          $rta['err'] = 0;
+          $rta['status'] = "success";
+          $rta['msg'] = "El curso se ha creado!";
+        }else{
+          $rta['err'] = 1;
+          $rta['status'] = "error";
+          $rta['msg'] = "Hubo un error al mover la imagen";
+        }
+      }else{
+        $rta['err'] = 2;
+        $rta['status'] = "error";
+        $rta['msg'] = "Hubo un error al insertar";
+      }
+    }else{
+      if($datos['idcurso']){
+        $condition = array('idcurso' => $datos['idcurso']);
 
+        unset($datos['idcurso']);
+        $result = $db->update('curso', $datos, $condition);
+        if($result){
+          $rta['err'] = 0;
+          $rta['status'] = "success";
+          $rta['msg'] = "El curso se ha actualizado";
+        }else{
+          $rta['err'] = 1;
+          $rta['status'] = "error";
+          $rta['msg'] = "Hubo un error al actualizar el curso";
+        }
+      }
+    }
+    return $response->withJson($rta);
+  }
+  public function eliminar($request, $response, array $args){
+    $sess = Session::loggedInfo();
+    $db = DBHandler::getHandler();
+    $datos = array_merge($request->getQueryParams(),$request->getParsedBody());
+    $ide = $datos['idcurso'];
+    $condition = array('idcurso' => $ide);
     if($sess['iduser']){
       $delete = $db->delete("curso", $condition);
       $this->logger->addInfo("Eliminacion de curso | ".$sess["nombuser"] );
     }
-    if($delete){
+    if($delete){  $rta['err'] = 1;
+      $rta['err'] = "0";
       $rta['status'] = "success";
-      $rta['message'] = "El curso ha sido eliminado.";
+      $rta['msg'] = "El curso ha sido eliminado.";
     }else{
+      $rta['err'] = 1;
       $rta['status'] = "error";
-      $rta['message'] = "Hubo un error al eliminar el curso.";
+      $rta['msg'] = "Hubo un error al eliminar el curso.";
     }
     return $response->withJson($rta);
   }

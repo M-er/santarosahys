@@ -11,8 +11,6 @@ class Servicio
 
   protected $idservicio;
   protected $titulo;
-  protected $path;
-  protected $url;
   protected $habilitado;
   protected $textohtml;
   protected $user_iduser;
@@ -28,8 +26,6 @@ class Servicio
   function newServicio(array $data){
     $this->idservicio = data['idservicio'];
     $this->titulo = data['titulo'];
-    $this->path = data['path'];
-    $this->url = data['url'];
     $this->habilitado = data['habilitado'];
     $this->textohtml = data['textohtml'];
     $this->user_iduser = data['user_iduser'];
@@ -53,23 +49,90 @@ class Servicio
     }
     return $response->withJson($rta);
   }
-  public function save($request, $response, array $args){}
-  public function delete($request, $response, array $args){
+  public function guardar($request, $response, array $args){
     $sess = Session::loggedInfo();
     $db = DBHandler::getHandler();
-    $ide = $args['idservicio'];
-    $condition = array('idservicio' => $ide);
+    $servicio = [];
+    $datos = array_merge($request->getQueryParams(),$request->getParsedBody());
+    $uploadedFiles = $request->getUploadedFiles();
+    $rta['err'] = 1;
+    $rta['status'] = "error";
+    $rta['msg'] = "Hubo un error";
+    if($uploadedFiles){
+      $datos['user_iduser'] = $sess['iduser'];
+      $datos['textohtml'] = html_entity_decode(htmlentities($datos['textohtml']));
+      if($datos['idservicio'] != 0){
+        $condition = array('idservicio' => $datos['idservicio']);
+        $servicioId = $datos['idservicio'];
+        unset($datos['idservicio']);
+        $result = $db->update('servicio', $datos, $condition);
+      }else{
+        unset($datos['idservicio']);
+        $result = $db->insert('servicio', $datos);
+        $servicioId = $result['id'];
+      }
+      if($result){
+        $directory = '../../../assets/servicios/'.$servicioId.'/';
+        if (!file_exists($directory)) {
+          mkdir($directory, 0777, true);
+        }
+        $uploadedFile = $uploadedFiles['imagen'];
+        // $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+        $extension = 'jpg';
+        $basename = $servicioId;
+        $filename = sprintf('%s.%0.8s', $basename, $extension);
+        $move = $uploadedFile->moveTo($directory.$filename);
+        if($move){
+          $rta['err'] = 0;
+          $rta['status'] = "success";
+          $rta['msg'] = "El servicio se ha creado!";
+        }else{
+          $rta['err'] = 1;
+          $rta['status'] = "error";
+          $rta['msg'] = "Hubo un error al mover la imagen";
+        }
+      }else{
+        $rta['err'] = 2;
+        $rta['status'] = "error";
+        $rta['msg'] = "Hubo un error al insertar";
+      }
+    }else{
+      if($datos['idservicio']){
+        $condition = array('idservicio' => $datos['idservicio']);
 
+        unset($datos['idservicio']);
+        $result = $db->update('servicio', $datos, $condition);
+        if($result){
+          $rta['err'] = 0;
+          $rta['status'] = "success";
+          $rta['msg'] = "El servicio se ha actualizado";
+        }else{
+          $rta['err'] = 1;
+          $rta['status'] = "error";
+          $rta['msg'] = "Hubo un error al actualizar el servicio";
+        }
+      }
+    }
+    return $response->withJson($rta);
+  }
+  public function eliminar($request, $response, array $args){
+    $sess = Session::loggedInfo();
+    $db = DBHandler::getHandler();
+    $datos = array_merge($request->getQueryParams(),$request->getParsedBody());
+    $ide = $datos['idservicio'];
+    $condition = array('idservicio' => $ide);
     if($sess['iduser']){
       $delete = $db->delete("servicio", $condition);
       $this->logger->addInfo("Eliminacion de servicio | ".$sess["nombuser"] );
     }
-    if($delete){
+    if($delete){  $rta['err'] = 1;
+      $rta['err'] = "0";
       $rta['status'] = "success";
-      $rta['message'] = "El servicio ha sido eliminado.";
+      $rta['msg'] = "El servicio ha sido eliminado.";
     }else{
+      $rta['err'] = 1;
       $rta['status'] = "error";
-      $rta['message'] = "Hubo un error al eliminar el servicio.";
+      $rta['msg'] = "Hubo un error al eliminar el servicio.";
     }
     return $response->withJson($rta);
   }

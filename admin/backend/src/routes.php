@@ -6,12 +6,15 @@ $app->get('/logout/', "logueador:logout");
 /* * * * * ABM * * * * */
 $app->group('/abm', function () use ($app) {
     $app->post('/cursos', 'curso:guardar');
+    $app->post('/cursos/eliminar', 'curso:eliminar');
     $app->post('/usuarios', 'usuario:guardar');
     $app->post('/producto', 'producto:guardar');
     $app->post('/servicios', 'servicio:guardar');
+    $app->post('/servicios/eliminar', 'servicio:eliminar');
     $app->post('/publicacion', 'publicacion:guardar');
     $app->post('/publicacion/eliminar', 'publicacion:eliminar');
     $app->post('/institucional', 'institucional:guardar');
+    $app->post('/institucional/eliminar', 'institucional:eliminar');
 });
 
 /* * * * * Hojeador * * * * */

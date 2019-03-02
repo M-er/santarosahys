@@ -24,6 +24,7 @@ import {
 	MatFormFieldModule,
 	MatRadioModule,
 	MatSidenavModule,
+	MatAutocompleteModule,
 	MatListModule,
 	MatMenuModule
 } from '@angular/material';
@@ -64,6 +65,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 		MatTableModule,
 		MatRadioModule,
 		MatSidenavModule,
+		MatAutocompleteModule,
 		MatListModule,
 		MatMenuModule,
 		UtilsModule,
@@ -103,6 +105,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 		MatTableModule,
 		MatRadioModule,
 		MatSidenavModule,
+		MatAutocompleteModule,
 		MatListModule,
 		MatMenuModule,
 		/** HighCharts */

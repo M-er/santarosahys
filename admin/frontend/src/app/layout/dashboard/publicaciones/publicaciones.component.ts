@@ -24,7 +24,7 @@ export class PublicacionesComponent implements OnInit {
     private httpService: HttpService,
     private utilService: UtilService,
     public dialog: MatDialog
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.path = this.router.url.split('/').splice(1);
@@ -61,13 +61,13 @@ export class PublicacionesComponent implements OnInit {
     console.log("limpieza")
   }
   eliminar(elemento) {
-    this.httpService.post('abm/publicacion/eliminar',elemento).then((data) => {
+    this.httpService.post('abm/publicacion/eliminar', elemento).then((data) => {
       this.utilService.notification(data.msg);
       this.init();
     });
   }
   nueva(datos) {
-    if(!datos){
+    if (!datos) {
       datos = {};
     }
     this.limpiar();
@@ -101,7 +101,7 @@ export class DialogoNoticia {
   user_iduser = 0;
   textohtml = null;
   habilitado = true;
-  idpublicacion = 0;
+  idpublicacion: any;
   cambiaImg = false;
   imagen = null;
   imagenU = null;
@@ -114,16 +114,16 @@ export class DialogoNoticia {
     private httpService: HttpService,
     private http: HttpClient,
     public dialogRef: MatDialogRef<DialogoNoticia>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { 
-      if(data){
-        this.idpublicacion = data.idpublicacion;
-        this.titulo = data.titulo;
-        this.imagen = data.path;
-        this.textohtml = data.textohtml;
-        this.habilitado = data.habilitado;
-      }
-      console.log(data)
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    if (data) {
+      this.idpublicacion = data.idpublicacion;
+      this.titulo = data.titulo;
+      this.imagen = data.path;
+      this.textohtml = data.textohtml;
+      this.habilitado = data.habilitado;
     }
+    console.log(data)
+  }
 
   cancelar() {
     this.dialogRef.close();
@@ -134,7 +134,7 @@ export class DialogoNoticia {
     formData.append('titulo', this.titulo);
     formData.append('textohtml', this.textohtml);
     formData.append('habilitado', this.habilitado ? '1' : '0');
-    if(this.cambiaImg)
+    if (this.cambiaImg)
       formData.append('imagen', this.imagenU, this.imagenU.name);
 
     this.httpService.post('abm/publicacion', formData).then((data) => {
@@ -152,7 +152,7 @@ export class DialogoNoticia {
   prevStep() { this.step--; }
 
   clickImagen(imagenInput) {
-    if (this.imagen === null) { imagenInput.click(); this.cambiaImg = true;} else { this.imagen = null; }
+    if (this.imagen === null) { imagenInput.click(); this.cambiaImg = true; } else { this.imagen = null; }
   }
 
   cargaImagen(ev) {

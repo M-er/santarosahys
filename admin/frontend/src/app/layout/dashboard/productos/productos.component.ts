@@ -98,16 +98,16 @@ export class ProductosComponent implements OnInit {
 export class DialogoProducto {
   @ViewChildren(FocusNextDirective) focusElements: QueryList<FocusNextDirective>;
 
-  path = null;
-  idprod = 0;
-  nombprod = null;
-  cantprod = 0;
-  user_iduser = 0;
-  descripcion = null;
-  precio = 0;
-  cambiaImg = false;
-  imagen = null;
-  imagenU = null;
+  precio: any;
+  idprod: any;
+  path: any;
+  cantprod: any;
+  imagen: any;
+  imagenU: any;
+  user_iduser: any;
+  nombprod: string;
+  descripcion: string;
+  cambiaImg: boolean;
 
   constructor(
     private utilService: UtilService,
@@ -138,10 +138,8 @@ export class DialogoProducto {
     formData.append('user_iduser', this.user_iduser);
     formData.append('descripcion', this.descripcion);
     formData.append('precio', this.precio);
-
     if (this.cambiaImg)
       formData.append('imagen', this.imagenU, this.imagenU.name);
-
     this.httpService.post('abm/producto', formData).then((data) => {
       if (data.err) {
         this.data.respuesta = "Error";
