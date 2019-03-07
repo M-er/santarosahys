@@ -1,10 +1,1 @@
-cache
-
-frontend/node_modules
-frontend/projects/*
-frontend/src/environments/environment.ts
-
-backend/vendor
-backend/logs/*
-backend/src/dbconfig.php
-
+admin/backend/logs/*
