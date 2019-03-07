@@ -7,7 +7,8 @@ $app->get('/logout/', "logueador:logout");
 $app->group('/abm', function () use ($app) {
     $app->post('/cursos', 'curso:guardar');
     $app->post('/cursos/eliminar', 'curso:eliminar');
-    $app->post('/usuarios', 'usuario:guardar');
+    $app->post('/usuario', 'usuario:guardar');
+    $app->post('/usuario/eliminar', 'usuario:eliminar');
     $app->post('/producto', 'producto:guardar');
     $app->post('/servicios', 'servicio:guardar');
     $app->post('/servicios/eliminar', 'servicio:eliminar');
@@ -19,6 +20,7 @@ $app->group('/abm', function () use ($app) {
 
 /* * * * * Hojeador * * * * */
 $app->group('/hojeador', function () use ($app) {
+  $app->get('/acciones', 'acciones:hojeador');
     $app->post('/cursos', 'cursos:hojeador');
     $app->post('/usuarios', 'usuarios:hojeador');
     $app->post('/productos', 'productos:hojeador');

@@ -108,8 +108,9 @@ export class DialogoInstitucional {
   categoria = null;
   habilitado = true;
   cambiaPdf = false;
-  pdf = '/assets/img/nopdf.png';
+  pdf = null;
   pdfU = null;
+  pathPdf = '/assets/img/nopdf.png';
   categorias: string[] = [
     'De la construcción',
     'Del agro',
@@ -119,8 +120,6 @@ export class DialogoInstitucional {
     'Protocolos',
     'Servicios de salud y seguridad'
   ];
-
-
 
   constructor(
     private utilService: UtilService,
@@ -144,7 +143,6 @@ export class DialogoInstitucional {
     var formData = new FormData();
     formData.append('idinstitucional', this.idinstitucional);
     formData.append('titulo', this.titulo);
-    formData.append('user_iduser', this.user_iduser);
     formData.append('categoria', this.categoria);
     formData.append('habilitado', this.habilitado ? '1' : '0');
     if (this.cambiaPdf)
@@ -161,14 +159,21 @@ export class DialogoInstitucional {
   }
 
   clickPdf(pdfInput) {
-    if (this.pdf === null) { pdfInput.click(); this.cambiaPdf = true; } else { this.pdf = '/assets/img/nopdf.png'; }
+    if (this.pdf === null) { 
+      pdfInput.click(); 
+      this.cambiaPdf = true; 
+    } else {
+      this.pdf = null;
+      this.pathPdf = '/assets/img/nopdf.png'; 
+      }
   }
 
   cargaPdf(ev) {
     this.utilService.leeArchivo(ev.target, 'dataurl', () => {
       this.utilService.notification('Error al cargar la pdf');
     }).then(result => {
-      this.pdf = '/assets/img/pdf.png';
+      this.pathPdf = '/assets/img/pdf.png';
+      this.pdf = result;
       this.pdfU = ev.target.files[0];
     });
   }

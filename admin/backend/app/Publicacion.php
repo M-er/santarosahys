@@ -83,12 +83,12 @@ class Publicacion
           mkdir($directory, 0777, true);
         }
         $uploadedFile = $uploadedFiles['imagen'];
-        // $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
         $extension = 'jpg';
         $basename = $pubId;
         $filename = sprintf('%s.%0.8s', $basename, $extension);
         $move = $uploadedFile->moveTo($directory.$filename);
         if($move){
+          $this->logger->addInfo("Creacion de publicacion | ".$sess["nombuser"] );
           $rta['err'] = 0;
           $rta['status'] = "success";
           $rta['msg'] = "La publicacion se ha creado!";
@@ -105,7 +105,6 @@ class Publicacion
     }else{
       if($datos['idpublicacion']){
         $condition = array('idpublicacion' => $datos['idpublicacion']);
-
         unset($datos['idpublicacion']);
         $result = $db->update('publicacion', $datos, $condition);
         if($result){

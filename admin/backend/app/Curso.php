@@ -77,12 +77,12 @@ class Curso
           mkdir($directory, 0777, true);
         }
         $uploadedFile = $uploadedFiles['imagen'];
-        // $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
         $extension = 'jpg';
         $basename = $pubId;
         $filename = sprintf('%s.%0.8s', $basename, $extension);
         $move = $uploadedFile->moveTo($directory.$filename);
         if($move){
+          $this->logger->addInfo("Creacion de curso | ".$sess["nombuser"] );
           $rta['err'] = 0;
           $rta['status'] = "success";
           $rta['msg'] = "El curso se ha creado!";

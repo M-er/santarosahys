@@ -36,3 +36,16 @@
 [2019-03-02 08:46:55] dyd-backend-app.INFO: Eliminacion de curso | mrivas [] {"uid":"e8d832b"}
 [2019-03-02 09:02:41] dyd-backend-app.INFO: Eliminacion de servicio | mrivas [] {"uid":"1dbd90f"}
 [2019-03-02 09:04:34] dyd-backend-app.INFO: Eliminacion de servicio | mrivas [] {"uid":"9bc7783"}
+[2019-03-03 15:31:04] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"de128a5"}
+[2019-03-03 16:50:00] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"795814d"}
+[2019-03-03 16:50:01] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"cc12151"}
+[2019-03-03 16:50:01] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"1dc438c"}
+[2019-03-03 17:18:21] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"63ebbb4"}
+[2019-03-03 17:21:29] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"899b847"}
+[2019-03-03 17:21:45] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"de6c92f"}
+[2019-03-03 17:22:43] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"96e8b1c"}
+[2019-03-03 17:23:27] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"46d4949"}
+[2019-03-03 18:13:33] dyd-backend-app.INFO: Eliminacion de usuario | mrivas [] {"uid":"184b96a"}
+[2019-03-03 18:13:34] dyd-backend-app.INFO: Eliminacion de usuario | mrivas [] {"uid":"4cfd001"}
+[2019-03-03 18:13:35] dyd-backend-app.INFO: Eliminacion de usuario | mrivas [] {"uid":"400e5c7"}
+[2019-03-04 09:05:46] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"dcf89e0"}

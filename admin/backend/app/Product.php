@@ -78,7 +78,6 @@ class Product
             mkdir($directory, 0777, true);
           }
           $uploadedFile = $uploadedFiles['imagen'];
-          // $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
           $extension = 'jpg';
           $basename = $prodId;
           $filename = sprintf('%s.%0.8s', $basename, $extension);
@@ -104,6 +103,7 @@ class Product
           unset($datos['idprod']);
           $result = $db->update('producto', $datos, $condition);
           if($result){
+            $this->logger->addInfo("Creacion de producto | ".$sess["nombuser"] );
             $rta['err'] = 0;
             $rta['status'] = "success";
             $rta['msg'] = "El producto se ha actualizado";

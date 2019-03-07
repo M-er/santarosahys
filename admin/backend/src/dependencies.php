@@ -21,6 +21,11 @@ $container['sessionador'] = function ($c) {
     return $session;
 };
 /*  * * * * Acciones  * * * *  */
+$container['acciones'] = function ($c) {
+    $acciones = new App\Acciones($c['logger']);
+    return $acciones;
+};
+/*  * * * * Login  * * * *  */
 $container['logueador'] = function ($c) {
     $loguea = new App\Login($c['logger']);
     return $loguea;
