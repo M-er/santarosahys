@@ -36,6 +36,65 @@
 [2019-03-02 08:46:55] dyd-backend-app.INFO: Eliminacion de curso | mrivas [] {"uid":"e8d832b"}
 [2019-03-02 09:02:41] dyd-backend-app.INFO: Eliminacion de servicio | mrivas [] {"uid":"1dbd90f"}
 [2019-03-02 09:04:34] dyd-backend-app.INFO: Eliminacion de servicio | mrivas [] {"uid":"9bc7783"}
+<<<<<<< HEAD
 [2019-03-04 16:17:43] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"c64c3c6"}
 [2019-03-04 16:17:43] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"bad24d1"}
 [2019-03-06 15:16:45] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"de75b3a"}
+=======
+[2019-03-03 15:31:04] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"de128a5"}
+[2019-03-03 16:50:00] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"795814d"}
+[2019-03-03 16:50:01] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"cc12151"}
+[2019-03-03 16:50:01] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"1dc438c"}
+[2019-03-03 17:18:21] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"63ebbb4"}
+[2019-03-03 17:21:29] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"899b847"}
+[2019-03-03 17:21:45] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"de6c92f"}
+[2019-03-03 17:22:43] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"96e8b1c"}
+[2019-03-03 17:23:27] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"46d4949"}
+[2019-03-03 18:13:33] dyd-backend-app.INFO: Eliminacion de usuario | mrivas [] {"uid":"184b96a"}
+[2019-03-03 18:13:34] dyd-backend-app.INFO: Eliminacion de usuario | mrivas [] {"uid":"4cfd001"}
+[2019-03-03 18:13:35] dyd-backend-app.INFO: Eliminacion de usuario | mrivas [] {"uid":"400e5c7"}
+[2019-03-04 09:05:46] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"dcf89e0"}
+>>>>>>> d166beb6cc4984004a6a530b834dcaed968b7fe6
+[2019-03-07 08:00:26] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"cf31711"}
+[2019-03-07 08:00:26] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"bd71b7e"}
+[2019-03-07 08:51:39] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"78f45f9"}
+[2019-03-07 08:53:55] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"3fd89d9"}
+[2019-03-07 16:00:26] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"a4ad895"}
+[2019-03-08 11:50:38] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"10e1dd7"}
+[2019-03-08 11:51:37] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"aaf9ad3"}
+[2019-03-08 11:51:37] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"c7e1bf8"}
+[2019-03-08 11:52:30] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"c4165f0"}
+[2019-03-08 11:52:30] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"8d02bc0"}
+[2019-03-08 11:53:09] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"3e29777"}
+[2019-03-08 11:53:09] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"3fa77c1"}
+[2019-03-08 11:53:52] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"b6d2cfa"}
+[2019-03-08 11:53:52] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"ef82ec9"}
+[2019-03-08 11:54:34] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"cc2203e"}
+[2019-03-08 11:54:34] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"e381fd6"}
+[2019-03-08 11:55:20] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"9b4bd7d"}
+[2019-03-08 11:55:20] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"86d6c90"}
+[2019-03-08 11:57:45] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"5a0dca8"}
+[2019-03-08 11:57:45] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"0ba1356"}
+[2019-03-08 11:58:17] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"3951e83"}
+[2019-03-08 11:58:17] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"0261aae"}
+[2019-03-08 11:59:14] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"65870d9"}
+[2019-03-08 11:59:15] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"08d9820"}
+[2019-03-08 12:14:41] dyd-backend-app.INFO: Eliminacion de usuario | mrivas [] {"uid":"8ef9bbc"}
+[2019-03-08 12:15:43] dyd-backend-app.INFO: Eliminacion de producto | mrivas [] {"uid":"08ded5b"}
+[2019-03-08 12:15:51] dyd-backend-app.INFO: Eliminacion de publicacion | mrivas [] {"uid":"83c1c88"}
+[2019-03-08 12:20:12] dyd-backend-app.INFO: Eliminacion de curso | mrivas [] {"uid":"19af8ac"}
+[2019-03-08 14:03:10] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"da7e06b"}
+[2019-03-08 14:11:27] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"8c038e0"}
+[2019-03-08 14:11:28] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"2958e73"}
+[2019-03-08 14:11:29] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"a2645bb"}
+[2019-03-08 14:11:30] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"ef5e22f"}
+[2019-03-08 14:11:30] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"4fef929"}
+[2019-03-08 14:11:30] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"4b62a8f"}
+[2019-03-08 14:11:31] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"69502e0"}
+[2019-03-08 14:11:31] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"df2a037"}
+[2019-03-08 14:11:31] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"003ea66"}
+[2019-03-08 14:11:32] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"f617bec"}
+[2019-03-08 14:11:45] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"5cea109"}
+[2019-03-08 14:11:45] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"a3fede2"}
+[2019-03-08 14:13:28] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"3887a0a"}
+[2019-03-08 14:13:29] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"b98227e"}

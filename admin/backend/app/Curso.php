@@ -63,26 +63,27 @@ class Curso
       $datos['textohtml'] = html_entity_decode(htmlentities($datos['textohtml']));
       if($datos['idcurso'] != 0){
         $condition = array('idcurso' => $datos['idcurso']);
-        $pubId = $datos['idcurso'];
+        $cursoId = $datos['idcurso'];
         unset($datos['idcurso']);
         $result = $db->update('curso', $datos, $condition);
       }else{
         unset($datos['idcurso']);
         $result = $db->insert('curso', $datos);
-        $pubId = $result['id'];
+        $cursoId = $result['id'];
       }
       if($result){
-        $directory = '../../../assets/cursos/'.$pubId.'/';
+        $directory = '../../../assets/cursos/'.$cursoId.'/';
         if (!file_exists($directory)) {
           mkdir($directory, 0777, true);
         }
         $uploadedFile = $uploadedFiles['imagen'];
-        // $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
         $extension = 'jpg';
-        $basename = $pubId;
+        $basename = $cursoId;
         $filename = sprintf('%s.%0.8s', $basename, $extension);
         $move = $uploadedFile->moveTo($directory.$filename);
         if($move){
+          $this->logger->addInfo("Creacion de curso | ".$sess["nombuser"] );
+          $logueo = $db->logger("Creacion de curso");
           $rta['err'] = 0;
           $rta['status'] = "success";
           $rta['msg'] = "El curso se ha creado!";
@@ -99,10 +100,9 @@ class Curso
     }else{
       if($datos['idcurso']){
         $condition = array('idcurso' => $datos['idcurso']);
-
         unset($datos['idcurso']);
-        $result = $db->update('curso', $datos, $condition);
         if($result){
+          $result = $db->update('curso', $datos, $condition);
           $rta['err'] = 0;
           $rta['status'] = "success";
           $rta['msg'] = "El curso se ha actualizado";
@@ -125,7 +125,8 @@ class Curso
       $delete = $db->delete("curso", $condition);
       $this->logger->addInfo("Eliminacion de curso | ".$sess["nombuser"] );
     }
-    if($delete){  $rta['err'] = 1;
+    if($delete){
+      $logueo = $db->logger("Eliminacion de curso");
       $rta['err'] = "0";
       $rta['status'] = "success";
       $rta['msg'] = "El curso ha sido eliminado.";

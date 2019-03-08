@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
 			}
 		});
 	}
-
+	olvide(){
+		this.utilService.notification("Por favor, comunicarse con el administrador del sitio.")
+	}
 	reset() {
 		this.user = '';
 		this.password = '';

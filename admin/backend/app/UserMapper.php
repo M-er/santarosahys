@@ -43,7 +43,7 @@ class UserMapper extends Mapper
             'desde' => $desde,
             'cuantos' => (int) $params['cuantos'],
             'direccion' => (empty($params['direccion']) ? 'asc' : $params['direccion']),
-            'columna' => $columna,
+            'columna' => ($columna == 'tipo')? 'tipouser':$columna,
             'hasta' => (int) $params['cuantos'],
             'fecha' => (!isset($params['fecha'])) ? null : vfech($params['fecha']),
             'texto' => (isset($params['texto'])) ? $params['texto'] : null,
@@ -54,6 +54,7 @@ class UserMapper extends Mapper
                 $datos[$k] = $v;
             }
 		}
+
 		$ordenamiento = ($datos['direccion'] == '' || $datos['columna'] == '') ? 'nombuser desc' : $datos['columna'] . ' ' . $datos['direccion'];
 
         if ($datos['texto']) {

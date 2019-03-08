@@ -49,7 +49,6 @@ class DBHandler extends DB{
       return false;
     }
   }
-
   /*
   * Update data into the database
   * @param string name of the table
@@ -85,12 +84,26 @@ class DBHandler extends DB{
       return false;
     }
   }
+  /*
+  * Log data into the database
+  * @param string accion with the accion it self
+  */
+  public function logger($accion){
+    $sess   = Session::loggedInfo();
+    $user   = $sess['iduser'];
+    $userIp = $this->getUserIP();
+    $sql = "INSERT INTO log(accion, direccionIp, user_iduser) VALUES ('".$accion."','".$userIp."',".$user.");";
+    $query = $this->conn->prepare($sql);
+    $logueo = $query->execute();
+    return $logueo;
+  }
 
   /*
   * Delete data from the database
   * @param string name of the table
   * @param array where condition on deleting data
   */
+
   public function delete($table, $conditions)
   {
     $whereSql = '';
@@ -110,5 +123,32 @@ class DBHandler extends DB{
   public function getHandler(){
     return new DBHandler();
   }
+  public function getUserIP()
+  {
+    if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
+      $_SERVER['REMOTE_ADDR'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+      $_SERVER['HTTP_CLIENT_IP'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+    }
+    $client  = @$_SERVER['HTTP_CLIENT_IP'];
+    $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+    $remote  = $_SERVER['REMOTE_ADDR'];
+
+    if(filter_var($client, FILTER_VALIDATE_IP))
+    {
+      $ip = $client;
+    }
+    elseif(filter_var($forward, FILTER_VALIDATE_IP))
+    {
+      $ip = $forward;
+    }
+    else
+    {
+      $ip = $remote;
+    }
+
+    return $ip;
+  }
+
+
 }
 ?>

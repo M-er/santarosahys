@@ -6,8 +6,7 @@ Clase Servicio
 Cada servicio estaria representado por una página.
 *
 **/
-class Servicio
-{
+class Servicio{
 
   protected $idservicio;
   protected $titulo;
@@ -66,9 +65,11 @@ class Servicio
         $servicioId = $datos['idservicio'];
         unset($datos['idservicio']);
         $result = $db->update('servicio', $datos, $condition);
+        $logueo = $db->logger("Actualizacion de servicio");
       }else{
         unset($datos['idservicio']);
         $result = $db->insert('servicio', $datos);
+        $logueo = $db->logger("Creacion de servicio");
         $servicioId = $result['id'];
       }
       if($result){
@@ -77,12 +78,12 @@ class Servicio
           mkdir($directory, 0777, true);
         }
         $uploadedFile = $uploadedFiles['imagen'];
-        // $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
         $extension = 'jpg';
         $basename = $servicioId;
         $filename = sprintf('%s.%0.8s', $basename, $extension);
         $move = $uploadedFile->moveTo($directory.$filename);
         if($move){
+          $this->logger->addInfo("Creacion de servicio | ".$sess["nombuser"] );
           $rta['err'] = 0;
           $rta['status'] = "success";
           $rta['msg'] = "El servicio se ha creado!";
@@ -99,13 +100,13 @@ class Servicio
     }else{
       if($datos['idservicio']){
         $condition = array('idservicio' => $datos['idservicio']);
-
         unset($datos['idservicio']);
         $result = $db->update('servicio', $datos, $condition);
         if($result){
           $rta['err'] = 0;
           $rta['status'] = "success";
           $rta['msg'] = "El servicio se ha actualizado";
+          $logueo = $db->logger("Actualizacion de servicio");
         }else{
           $rta['err'] = 1;
           $rta['status'] = "error";
@@ -125,10 +126,11 @@ class Servicio
       $delete = $db->delete("servicio", $condition);
       $this->logger->addInfo("Eliminacion de servicio | ".$sess["nombuser"] );
     }
-    if($delete){  $rta['err'] = 1;
+    if($delete){
       $rta['err'] = "0";
       $rta['status'] = "success";
       $rta['msg'] = "El servicio ha sido eliminado.";
+      $logueo = $db->logger("Eliminacion de servicio");
     }else{
       $rta['err'] = 1;
       $rta['status'] = "error";

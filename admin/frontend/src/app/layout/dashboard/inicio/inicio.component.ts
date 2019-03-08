@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UtilService, HttpService } from '@app/core';
 import { Router } from '@angular/router';
 import { Chart } from 'angular-highcharts';
-
 @Component({
   selector: 'tr-inicio',
   templateUrl: './inicio.component.html',
@@ -29,6 +28,24 @@ export class InicioComponent implements OnInit {
     console.log("Agregando punto");
   }
   init() {
-  }
 
+    this.chart = new Chart({
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: 'Ejemplo'
+      },
+      credits: {
+        enabled: false
+      },
+      series: [
+        {
+          name: 'Eje X',
+          data: [1, 2, 3]
+        }
+      ]
+    });
+
+}
 }

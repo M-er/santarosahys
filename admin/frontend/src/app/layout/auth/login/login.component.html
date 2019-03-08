@@ -4,7 +4,7 @@
 			<form (keydown.enter)="$event.preventDefault()" #loginForm="ngForm" (ngSubmit)="login()">
 				<mat-card class="v-align">
 					<div class="center logo">
-						<h4>Santa Rosa Higiene y Seguridad </h4>
+						<h4 class="white-text">Santa Rosa Higiene y Seguridad </h4>
 					</div>
 					<mat-card-content>
 						<div class="row">
@@ -20,7 +20,7 @@
 								<mat-icon class="action" matSuffix (click)="show = !show">{{!show ? 'visibility_off' : 'visibility'}}</mat-icon>
 							</mat-form-field>
 							<div class="col s10 offset-s2">
-								<a>Olvidé mi contraseña</a>
+								<a (click)="olvide()" >Olvidé mi contraseña</a>
 							</div>
 						</div>
 					</mat-card-content>

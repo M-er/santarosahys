@@ -21,6 +21,11 @@ $container['sessionador'] = function ($c) {
     return $session;
 };
 /*  * * * * Acciones  * * * *  */
+$container['acciones'] = function ($c) {
+    $acciones = new App\Acciones($c['logger']);
+    return $acciones;
+};
+/*  * * * * Login  * * * *  */
 $container['logueador'] = function ($c) {
     $loguea = new App\Login($c['logger']);
     return $loguea;
@@ -84,3 +89,7 @@ $container['publicaciones'] = function ($c) {
     $publicaciones = new App\PublicacionMapper($c['logger']);
     return $publicaciones;
 };
+ 
+$container['acciones'] = function ($c) { 
+	$tabla = new App\Acciones($c['logger']);
+	 return $tabla; };

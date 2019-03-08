@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Creacion de usuario</h1>
+<div style="padding: 1em;" mat-dialog-content>
+	<div class="row">
+		<div class="col s6">
+			<mat-card>
+				<mat-card-content>
+					<mat-form-field>
+						<input trFocusNext="1" matInput [(ngModel)]="nombuser" name="nombuser" placeholder="Nombre de usuario">
+					</mat-form-field>
+					<mat-form-field>
+						<input trFocusNext="2" matInput [(ngModel)]="contuserN" name="contuser" placeholder="Contraseña nueva de usuario">
+					</mat-form-field>
+					<mat-form-field>
+						<mat-select trFocusNext="3" [(ngModel)]="tipouser" name="tipouser" placeholder="Tipo de usuario">
+							<mat-option *ngFor="let tipo of tipos" [value]="tipo.valor">
+								<span>{{ tipo.titulo }}</span>
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</mat-card-content>
+			</mat-card>
+
+		</div>
+		<div class="col s6">
+			<mat-card class="example-card center-align">
+				<img mat-card-image *ngIf="!imagen" class="img-usuario" [src]="path">
+				<ng-container *ngIf="imagen">
+					<img mat-card-image class="img-usuario" src="{{ imagen }}" (click)="clickImagen($event)">
+				</ng-container>
+				<mat-card-actions>
+					<input style="padding-left:2em;" type="file" #imagenInput (change)="cargaImagen($event)">
+					<ng-container *ngIf="!imagen">
+						<button title="Cargar imagen" color="primary" (click)="clickImagen(imagenInput)" mat-raised-button>
+							<mat-icon>cloud_upload</mat-icon>
+							<span>Nueva imagen</span>
+						</button>
+					</ng-container>
+					<button *ngIf="imagen" title="Cambiar imagen" color="secondary" (click)="clickImagen($event)" mat-raised-button>Volver
+						a la anterior</button>
+				</mat-card-actions>
+			</mat-card>
+		</div>
+	</div>
+</div>
+<div mat-dialog-actions>
+	<button mat-button color="primary" (click)="cancelar()">Cancelar</button>
+	<button mat-button color="accent" (click)="guardar()" cdkFocusInitial>Guardar</button>
+</div>

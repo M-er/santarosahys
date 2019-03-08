@@ -91,7 +91,7 @@ class InstitucionalMapper extends Mapper
 			'desde' => $desde,
 			'cuantos' => (int) $params['cuantos'],
 			'direccion' => (empty($params['direccion']) ? 'asc' : $params['direccion']),
-			'columna' => $columna,
+			'columna' => ($columna == 'usuario')? 'nombuser' : $columna,
 			'hasta' => (int) $params['cuantos'],
 			'fecha' => (!isset($params['fecha'])) ? null : vfech($params['fecha']),
 			'texto' => (isset($params['texto'])) ? $params['texto'] : null,

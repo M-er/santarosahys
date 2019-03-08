@@ -1,47 +1,18 @@
 {
-    "name": "slim/slim-skeleton",
-    "description": "A Slim Framework skeleton application for rapid development",
-    "keywords": ["microframework", "rest", "router", "psr7"],
-    "homepage": "http://github.com/slimphp/Slim-Skeleton",
-    "license": "MIT",
+    "name": "tres-erres/slim-cli",
+    "description": "CLI generador de archivos y proveedor de utilidades",
+    "type": "composer-plugin",
+    "require": {
+        "adodb/adodb-php": "dev-master",
+        "slim/slim": "^3.1",
+        "respect/validation": "^1.1"
+    },
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
-            "name": "Josh Lockhart",
-            "email": "info@joshlockhart.com",
-            "homepage": "http://www.joshlockhart.com/"
+            "name": "Tres Erres",
+            "email": "pmrivas@gmail.com"
         }
     ],
-    "require": {
-        "php": ">=5.5.0",
-        "slim/slim": "^3.1",
-        "adodb/adodb-php": "^5.20",
-        "ziplr/php-qr-code": "^1.0",
-        "phpmailer/phpmailer": "^6.0",
-        "monolog/monolog": "^1.17"
-    },
-    "require-dev": {
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"         
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/"
-        }
-    },
-    "config": {
-        "process-timeout" : 0
-    },
-    "scripts": {
-        "start": "php -S localhost:8080 -t public",
-        "test": "phpunit",
-        "post-install-cmd": [
-            "php -r \"if (!file_exists('src/dbconfig.php')) copy('src/dbconfig.php.sample', 'src/dbconfig.php');\"",
-            "php -r \"if (!file_exists('logs/info.log')) touch('logs/info.log');\"",
-            "php -r \"if (!file_exists('logs/error.log')) touch('logs/error.log');\""
-        ]
-    }
-
+    "minimum-stability": "dev"
 }

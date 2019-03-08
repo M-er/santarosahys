@@ -36,7 +36,7 @@ export class ServiciosComponent implements OnInit {
       columnas: [
         { ancho: 15, def: 'idservicio', nombre: 'ID.', tipo: 'texto' },
         { ancho: 25, def: 'titulo', nombre: 'Titulo', tipo: 'texto' },
-        { ancho: 25, def: 'path', nombre: 'Path', tipo: 'imagen' },
+        { ancho: 25, def: 'path', nombre: 'Imagen', tipo: 'imagen' },
         { ancho: 15, def: 'habilitado', nombre: 'Habilitado', tipo: 'numero' },
         { ancho: 10, def: 'usuario', nombre: 'Usuario creador', tipo: 'texto' },
         { ancho: 10, def: 'acciones', nombre: 'Acciones', tipo: 'texto' },

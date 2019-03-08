@@ -51,52 +51,94 @@ class Institucional
     }
     return $response->withJson($rta);
   }
-  public function save($request, $response, array $args){
+  public function guardar($request, $response, array $args){
     $sess = Session::loggedInfo();
     $db = DBHandler::getHandler();
-    $sigo = false;
-    $inst = $request->getParsedBody();
+    $institucional = [];
+    $datos = array_merge($request->getQueryParams(),$request->getParsedBody());
     $uploadedFiles = $request->getUploadedFiles();
-    $datos = $request->getParsedBody();
+    $rta['err'] = 1;
+    $rta['status'] = "error";
+    $rta['msg'] = "Hubo un error";
     if($uploadedFiles){
-      $uploadedFile = $uploadedFiles[0];
-
-      $directory = '../../assets/pdf/';
-      $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
-      $basename = $datos['titulo']; // see http://php.net/manual/en/function.random-bytes.php
-      $filename = sprintf('%s.%0.8s', $basename, $extension);
-      $uploadedFile->moveTo($directory.$filename);
-      $inst['path']=$filename;
-    }
-    $condition = "";
-    $inst['user_iduser'] = $sess['iduser'];
-    $insert = $db->insert("institucional", $inst);
-    if($insert){
-      $this->logger->addInfo("Creacion de institucional: ".$sess["nombuser"] );
-      $rta['status'] = "success";
-      $rta['message'] = "El video/documento se ha subido satisfactoriamente";
+      $datos['user_iduser'] = $sess['iduser'];
+      if($datos['idinstitucional'] != 0){
+        $condition = array('idinstitucional' => $datos['idinstitucional']);
+        $instId = $datos['idinstitucional'];
+        unset($datos['idinstitucional']);
+        $result = $db->update('institucional', $datos, $condition);
+      }else{
+        unset($datos['idinstitucional']);
+        $result = $db->insert('institucional', $datos);
+        $instId = $result['id'];
+      }
+      if($result){
+        $directory = '../../../assets/pdf/';
+        if (!file_exists($directory)) {
+          mkdir($directory, 0777, true);
+        }
+        $uploadedFile = $uploadedFiles['pdf'];
+        $extension = 'pdf';
+        $basename = $instId;
+        $filename = sprintf('%s.%0.8s', $basename, $extension);
+        $move = $uploadedFile->moveTo($directory.$filename);
+        if($move){
+          $this->logger->addInfo("Creacion de documentacion institucional | ".$sess["nombuser"] );
+          $logueo = $db->logger("Creacion de documentacion institucional");
+          $rta['err'] = 0;
+          $rta['status'] = "success";
+          $rta['msg'] = "El documento se ha creado!";
+        }else{
+          $rta['err'] = 1;
+          $rta['status'] = "error";
+          $rta['msg'] = "Hubo un error al mover la imagen";
+        }
+      }else{
+        $rta['err'] = 2;
+        $rta['status'] = "error";
+        $rta['msg'] = "Hubo un error al insertar";
+      }
     }else{
-      $rta['status'] = "error";
-      $rta['message'] = "Error al subir el video/documento. Revise los campos.";
+      if($datos['idinstitucional']){
+        $condition = array('idinstitucional' => $datos['idinstitucional']);
+        unset($datos['idinstitucional']);
+        $result = $db->update('institucional', $datos, $condition);
+        if($result){
+          $logueo = $db->logger("Actualizacion de documentacion institucional");
+          $rta['err'] = 0;
+          $rta['status'] = "success";
+          $rta['msg'] = "El documento se ha actualizado";
+        }else{
+          $rta['err'] = 1;
+          $rta['status'] = "error";
+          $rta['msg'] = "Hubo un error al actualizar el documento";
+        }
+      }
     }
     return $response->withJson($rta);
   }
-  public function delete($request, $response, array $args){
+  public function eliminar($request, $response, array $args){
     $sess = Session::loggedInfo();
     $db = DBHandler::getHandler();
-    $ide = $args['idinstitucional'];
+    $datos = array_merge($request->getQueryParams(),$request->getParsedBody());
+    $ide = $datos['idinstitucional'];
     $condition = array('idinstitucional' => $ide);
-
     if($sess['iduser']){
       $delete = $db->delete("institucional", $condition);
-      $this->logger->addInfo("Eliminacion de documentacion/video | ".$sess["nombuser"] );
+      if($delete){
+        $delete = unlink('../../../assets/pdf/' . $ide .'.pdf');
+        $this->logger->addInfo("Eliminacion de documentacion institucional | ".$sess["nombuser"] );
+      }
     }
     if($delete){
+      $logueo = $db->logger("Eliminacion de documentacion institucional");
+      $rta['err'] = 0;
       $rta['status'] = "success";
-      $rta['message'] = "La documentacion/video ha sido eliminada.";
+      $rta['msg'] = "El documento ha sido eliminado.";
     }else{
+      $rta['err'] = 1;
       $rta['status'] = "error";
-      $rta['message'] = "Hubo un error al eliminar la documentacion/video.";
+      $rta['msg'] = "Hubo un error al eliminar el documento.";
     }
     return $response->withJson($rta);
   }

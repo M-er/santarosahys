@@ -46,6 +46,7 @@ class Login
 				}
 				$_SESSION['iduser'] = $user['iduser'];
 				$_SESSION['nombuser'] = $user['nombuser'];
+				$logueo = $conn->logger("Ingreso al sistema");
 			} else {
 				$rta['err'] = "error";
 				$rta['msg'] = 'Error de inicio de sesion. Credenciales incorrectas';

@@ -5,26 +5,29 @@ $app->post('/login/', "logueador:login");
 $app->get('/logout/', "logueador:logout");
 /* * * * * ABM * * * * */
 $app->group('/abm', function () use ($app) {
-    $app->post('/cursos', 'curso:guardar');
-    $app->post('/cursos/eliminar', 'curso:eliminar');
-    $app->post('/usuarios', 'usuario:guardar');
-    $app->post('/producto', 'producto:guardar');
-    $app->post('/servicios', 'servicio:guardar');
-    $app->post('/servicios/eliminar', 'servicio:eliminar');
-    $app->post('/publicacion', 'publicacion:guardar');
-    $app->post('/publicacion/eliminar', 'publicacion:eliminar');
-    $app->post('/institucional', 'institucional:guardar');
-    $app->post('/institucional/eliminar', 'institucional:eliminar');
+  $app->post('/cursos', 'curso:guardar');
+  $app->post('/cursos/eliminar', 'curso:eliminar');
+  $app->post('/usuario', 'usuario:guardar');
+  $app->post('/usuario/eliminar', 'usuario:eliminar');
+  $app->post('/producto', 'producto:guardar');
+  $app->post('/producto/eliminar', 'producto:eliminar');
+  $app->post('/servicios', 'servicio:guardar');
+  $app->post('/servicios/eliminar', 'servicio:eliminar');
+  $app->post('/publicacion', 'publicacion:guardar');
+  $app->post('/publicacion/eliminar', 'publicacion:eliminar');
+  $app->post('/institucional', 'institucional:guardar');
+  $app->post('/institucional/eliminar', 'institucional:eliminar');
 });
 
 /* * * * * Hojeador * * * * */
 $app->group('/hojeador', function () use ($app) {
-    $app->post('/cursos', 'cursos:hojeador');
-    $app->post('/usuarios', 'usuarios:hojeador');
-    $app->post('/productos', 'productos:hojeador');
-    $app->post('/servicios', 'servicios:hojeador');
-    $app->post('/publicaciones', 'publicaciones:hojeador');
-    $app->post('/institucional', 'institucionales:hojeador');
+  $app->post('/acciones', 'acciones:hojeador');
+  $app->post('/cursos', 'cursos:hojeador');
+  $app->post('/usuarios', 'usuarios:hojeador');
+  $app->post('/productos', 'productos:hojeador');
+  $app->post('/servicios', 'servicios:hojeador');
+  $app->post('/publicaciones', 'publicaciones:hojeador');
+  $app->post('/institucional', 'institucionales:hojeador');
 });
 
 /* * * * * Usuarios * * * * */

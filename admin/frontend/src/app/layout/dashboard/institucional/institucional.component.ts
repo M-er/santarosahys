@@ -36,7 +36,11 @@ export class InstitucionalComponent implements OnInit {
         { ancho: 10, def: 'idinstitucional', nombre: 'Identificador', tipo: 'texto' },
         { ancho: 10, def: 'titulo', nombre: 'Titulo', tipo: 'texto' },
         { ancho: 20, def: 'categoria', nombre: 'Categoria', tipo: 'texto' },
-        { ancho: 10, def: 'path', nombre: 'Pdf', tipo: 'pdf' },
+        {
+          ancho: 10, def: 'path', nombre: 'Pdf', tipo: 'boton', accion: [{
+            title: () => 'PDF', icon: () => 'picture_as_pdf', handler: (element) => {
+          window.open(environment.pdfUrl + element, '_blank');
+        } }]},
         { ancho: 10, def: 'habilitado', nombre: 'Habilitado', tipo: 'texto' },
         { ancho: 10, def: 'usuario', nombre: 'Usuario creador', tipo: 'texto' },
         { ancho: 10, def: 'acciones', nombre: 'Acciones', tipo: 'texto' },
@@ -48,6 +52,7 @@ export class InstitucionalComponent implements OnInit {
       ],
       modificarDatos: (datos) => {
         datos.forEach(element => {
+          element.path = element.idinstitucional+'.pdf';
           switch (element.user_iduser) {
             case '3':
               element.usuario = "mrivas";
@@ -108,8 +113,9 @@ export class DialogoInstitucional {
   categoria = null;
   habilitado = true;
   cambiaPdf = false;
-  pdf = '/assets/img/nopdf.png';
+  pdf = null;
   pdfU = null;
+  pathPdf = '/assets/img/nopdf.png';
   categorias: string[] = [
     'De la construcción',
     'Del agro',
@@ -119,8 +125,6 @@ export class DialogoInstitucional {
     'Protocolos',
     'Servicios de salud y seguridad'
   ];
-
-
 
   constructor(
     private utilService: UtilService,
@@ -144,7 +148,6 @@ export class DialogoInstitucional {
     var formData = new FormData();
     formData.append('idinstitucional', this.idinstitucional);
     formData.append('titulo', this.titulo);
-    formData.append('user_iduser', this.user_iduser);
     formData.append('categoria', this.categoria);
     formData.append('habilitado', this.habilitado ? '1' : '0');
     if (this.cambiaPdf)
@@ -161,14 +164,21 @@ export class DialogoInstitucional {
   }
 
   clickPdf(pdfInput) {
-    if (this.pdf === null) { pdfInput.click(); this.cambiaPdf = true; } else { this.pdf = '/assets/img/nopdf.png'; }
+    if (this.pdf === null) { 
+      pdfInput.click(); 
+      this.cambiaPdf = true; 
+    } else {
+      this.pdf = null;
+      this.pathPdf = '/assets/img/nopdf.png'; 
+      }
   }
 
   cargaPdf(ev) {
     this.utilService.leeArchivo(ev.target, 'dataurl', () => {
       this.utilService.notification('Error al cargar la pdf');
     }).then(result => {
-      this.pdf = '/assets/img/pdf.png';
+      this.pathPdf = '/assets/img/pdf.png';
+      this.pdf = result;
       this.pdfU = ev.target.files[0];
     });
   }

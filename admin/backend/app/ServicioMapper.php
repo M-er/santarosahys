@@ -42,7 +42,7 @@ class ServicioMapper extends Mapper
 			'desde' => $desde,
 			'cuantos' => (int) $params['cuantos'],
 			'direccion' => (empty($params['direccion']) ? 'asc' : $params['direccion']),
-			'columna' => $columna,
+			'columna' => ($columna == 'usuario')? 'nombuser' : $columna,
 			'hasta' => (int) $params['cuantos'],
 			'texto' => (isset($params['texto'])) ? $params['texto'] : null,
 		];

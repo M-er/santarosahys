@@ -1,13 +1,14 @@
-.img-perfil{
+.img-usuario{
     cursor: pointer;
-    width: 15em;
+    width: 10em;
+    border-radius: 85%;
 }
 .icono-img {
     vertical-align: middle;
     margin-right: 8px;
     max-width: 25px;
 }
-
 input[type="file"] {
 	display: none;
 }
+

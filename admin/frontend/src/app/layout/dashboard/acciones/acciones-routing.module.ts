@@ -3,9 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AccionesComponent } from './acciones.component';
 
 const routes: Routes = [
-  { path: '', component: AccionesComponent }
+    { path: '', component: AccionesComponent }
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
