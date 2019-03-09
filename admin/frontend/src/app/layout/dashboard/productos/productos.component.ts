@@ -7,9 +7,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '@env';
 
-export interface DialogData {
-  respuesta: string;
-}
 
 @Component({
   selector: 'tr-productos',
@@ -39,11 +36,11 @@ export class ProductosComponent implements OnInit {
       columnas: [
         { ancho: 10, def: 'idprod', nombre: 'Id.', tipo: 'texto' },
         { ancho: 10, def: 'nombprod', nombre: 'Titulo', tipo: 'texto' },
-        { ancho: 15, def: 'cantprod', nombre: 'Cantidad', tipo: 'numero' },
+        { ancho: 10, def: 'cantprod', nombre: 'Stock', tipo: 'texto' },
         { ancho: 10, def: 'path', nombre: 'Imagen', tipo: 'imagen' },
-        { ancho: 15, def: 'descripcion', nombre: 'Descripcion', tipo: 'texto' },
-        { ancho: 15, def: 'precio', nombre: 'Precio', tipo: 'texto' },
-        { ancho: 20, def: 'acciones', nombre: 'Acciones', tipo: 'texto' },
+        { ancho: 25, def: 'descripcion', nombre: 'Descripcion', tipo: 'texto' },
+        { ancho: 10, def: 'precio', nombre: 'Precio', tipo: 'texto' },
+        { ancho: 15, def: 'acciones', nombre: 'Acciones', tipo: 'texto' },
       ],
       url: 'hojeador/productos',
       acciones: [
@@ -97,10 +94,9 @@ export class ProductosComponent implements OnInit {
 })
 export class DialogoProducto {
   @ViewChildren(FocusNextDirective) focusElements: QueryList<FocusNextDirective>;
-
   precio: any;
   idprod: any;
-  path: any;
+  path = '/assets/img/noprod.png';
   cantprod: any;
   imagen: any;
   imagenU: any;
@@ -120,7 +116,7 @@ export class DialogoProducto {
       this.idprod = data.idprod;
       this.nombprod = data.nombprod;
       this.cantprod = data.cantprod;
-      this.imagen = data.imgprod;
+      this.imagen = data.path;
       this.user_iduser = data.user_iduser;
       this.descripcion = data.descripcion;
       this.precio = data.precio;
@@ -153,7 +149,6 @@ export class DialogoProducto {
   clickImagen(imagenInput) {
     if (this.imagen === null) { imagenInput.click(); this.cambiaImg = true; } else { this.imagen = null; }
   }
-
   cargaImagen(ev) {
     this.utilService.leeArchivo(ev.target, 'dataurl', () => {
       this.utilService.notification('Error al cargar la imagen');
@@ -163,4 +158,3 @@ export class DialogoProducto {
     });
   }
 }
-

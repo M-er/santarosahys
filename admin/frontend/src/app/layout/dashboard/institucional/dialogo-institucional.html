@@ -10,21 +10,20 @@
 					<mat-form-field>
 						<input matInput [(ngModel)]="titulo" name="titulo" placeholder="Titulo del documentacion">
 					</mat-form-field>
-				</mat-card-content>
-			</mat-card>
-			<mat-card>
-				<mat-card-content>
-					<input type="text" [(ngModel)]="categoria" placeholder="Categoria" aria-label="Categoria" matInput [matAutocomplete]="auto">
-					<mat-autocomplete #auto="matAutocomplete">
-						<mat-option *ngFor="let categoria of categorias" [value]="categoria">
-							{{ categoria }}
-						</mat-option>
-					</mat-autocomplete>
+					<div style="margin-top:2em;">
+						<input type="text" [(ngModel)]="categoria" placeholder="Categoria" aria-label="Categoria" matInput
+						 [matAutocomplete]="auto">
+						<mat-autocomplete #auto="matAutocomplete">
+							<mat-option *ngFor="let categoria of categorias" [value]="categoria.titulo">
+								{{ categoria.titulo }}
+							</mat-option>
+						</mat-autocomplete>
+					</div>
 				</mat-card-content>
 			</mat-card>
 		</div>
 		<div class="col s6">
-			<mat-card class="example-card center-align">
+			<mat-card class="center-align">
 				<img mat-card-image *ngIf="!pdf" class="img-institucional" [src]="pathPdf">
 				<ng-container *ngIf="pdf">
 					<img mat-card-image class="img-institucional" src="{{ pathPdf }}" (click)="clickPdf($event)">

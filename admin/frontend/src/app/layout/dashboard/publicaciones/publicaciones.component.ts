@@ -6,6 +6,7 @@ import { FocusNextDirective } from '@app/shared';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '@env';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'tr-publicaciones',
@@ -39,7 +40,7 @@ export class PublicacionesComponent implements OnInit {
         { ancho: 10, def: 'path', nombre: 'Imagen', tipo: 'imagen' },
         { ancho: 20, def: 'habilitado', nombre: 'Habilitado', tipo: 'texto' },
         { ancho: 10, def: 'fecha', nombre: 'Fecha', tipo: 'texto' },
-        { ancho: 10, def: 'usuario', nombre: 'Usuario creador', tipo: 'texto' },
+        { ancho: 10, def: 'nombuser', nombre: 'Usuario creador', tipo: 'texto' },
         { ancho: 10, def: 'acciones', nombre: 'Acciones', tipo: 'texto' },
       ],
       url: 'hojeador/publicaciones',
@@ -49,17 +50,6 @@ export class PublicacionesComponent implements OnInit {
       ],
       modificarDatos: (datos) => {
         datos.forEach(element => {
-          switch(element.user_iduser){
-            case '3':
-              element.usuario = "mrivas";
-              break;
-            case '4':
-              element.usuario = "djuarez";
-              break;
-            case '6':
-              element.usuario = "derrecalde";
-              break;
-          }
           element.path = environment.publicacionesUrl + element.idpublicacion + '/' + element.idpublicacion + '.jpg';
           element.habilitado = (element.habilitado == '1' || element.habilitado == 'Habilitada') ? 'Habilitada' : 'No habilitada';
         });
@@ -106,7 +96,7 @@ export class PublicacionesComponent implements OnInit {
 export class DialogoNoticia {
   step = 0;
   url = null;
-  path = 'img/noimage.png';
+  path = 'img/nopub.png';
   fecha = null;
   titulo = null;
   user_iduser = 0;
@@ -174,5 +164,13 @@ export class DialogoNoticia {
       this.imagenU = ev.target.files[0];
     });
   }
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '10rem',
+    minHeight: '5rem',
+    placeholder: 'Ingrese el texto de la publicación',
+    translate: 'no'
+  };
 }
 

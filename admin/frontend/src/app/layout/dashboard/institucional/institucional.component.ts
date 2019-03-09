@@ -42,7 +42,7 @@ export class InstitucionalComponent implements OnInit {
           window.open(environment.pdfUrl + element, '_blank');
         } }]},
         { ancho: 10, def: 'habilitado', nombre: 'Habilitado', tipo: 'texto' },
-        { ancho: 10, def: 'usuario', nombre: 'Usuario creador', tipo: 'texto' },
+        { ancho: 10, def: 'nombuser', nombre: 'Usuario creador', tipo: 'texto' },
         { ancho: 10, def: 'acciones', nombre: 'Acciones', tipo: 'texto' },
       ],
       url: 'hojeador/institucional',
@@ -52,24 +52,26 @@ export class InstitucionalComponent implements OnInit {
       ],
       modificarDatos: (datos) => {
         datos.forEach(element => {
-          element.path = element.idinstitucional+'.pdf';
-          switch (element.user_iduser) {
-            case '3':
-              element.usuario = "mrivas";
-              break;
-            case '4':
-              element.usuario = "djuarez";
-              break;
-            case '6':
-              element.usuario = "derrecalde";
-              break;
-          }
+          var categoria = this.getCategoria(element.categoria);
+          element.path = categoria +element.idinstitucional+'.pdf';
           element.habilitado = (element.habilitado == '1' || element.habilitado == 'Habilitado') ? 'Habilitado' : 'No habilitado';
         });
         return datos;
       }
     };
     this.hojeador.init(this.hojeadorPrefs);
+  }
+  getCategoria(categoria){
+    switch (categoria) {
+      case 'Del agro': categoria = 'aa/'; break;
+      case 'De la construcción': categoria = 'ca/'; break;
+      case 'Enfermedades profesionales': categoria = 'ea/'; break;
+      case 'Leyes generales': categoria = 'ga/'; break;
+      case 'De la mineria': categoria = 'ma/'; break;
+      case 'Protocolos': categoria = 'pa/'; break;
+      case 'Servicios de salud y seguridad': categoria = 'sa/'; break;
+    }
+    return categoria;
   }
   limpiar() {
     console.log("limpieza")
@@ -116,14 +118,14 @@ export class DialogoInstitucional {
   pdf = null;
   pdfU = null;
   pathPdf = '/assets/img/nopdf.png';
-  categorias: string[] = [
-    'De la construcción',
-    'Del agro',
-    'De la mineria',
-    'Enfermedades profesionales',
-    'Leyes generales',
-    'Protocolos',
-    'Servicios de salud y seguridad'
+  categorias: any[] = [
+    {id: 1, titulo:'Del agro', min:'aa'},
+    {id: 2, titulo:'De la construcción', min:'ca'},
+    {id: 3, titulo:'Enfermedades profesionales', min:'ea'},
+    {id: 4, titulo:'Leyes generales', min:'ga'},
+    {id: 5, titulo:'De la mineria', min:'ma'},
+    {id: 6, titulo:'Protocolos', min:'pa'},
+    {id: 7, titulo:'Servicios de salud y seguridad', min:'sa'}
   ];
 
   constructor(

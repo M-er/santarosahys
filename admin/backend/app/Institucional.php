@@ -61,6 +61,16 @@ class Institucional
     $rta['status'] = "error";
     $rta['msg'] = "Hubo un error";
     if($uploadedFiles){
+      switch ($datos['categoria']) {
+        case 'Del agro':$categoria = 'aa/';break;
+        case 'De la construcción':$categoria = 'ca/';break;
+        case 'Enfermedades profesionales':$categoria = 'ea/';break;
+        case 'Leyes generales':$categoria = 'ga/';break;
+        case 'De la mineria':$categoria = 'ma/';break;
+        case 'Protocolos':$categoria = 'pa/';break;
+        case 'Servicios de salud y seguridad':$categoria = 'sa/';break;
+      }
+
       $datos['user_iduser'] = $sess['iduser'];
       if($datos['idinstitucional'] != 0){
         $condition = array('idinstitucional' => $datos['idinstitucional']);
@@ -73,7 +83,7 @@ class Institucional
         $instId = $result['id'];
       }
       if($result){
-        $directory = '../../../assets/pdf/';
+        $directory = '../../../assets/pdf/'.$categoria;
         if (!file_exists($directory)) {
           mkdir($directory, 0777, true);
         }
