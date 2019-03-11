@@ -92,17 +92,11 @@ class Institucional
         $basename = $instId;
         $filename = sprintf('%s.%0.8s', $basename, $extension);
         $move = $uploadedFile->moveTo($directory.$filename);
-        if($move){
           $this->logger->addInfo("Creacion de documentacion institucional | ".$sess["nombuser"] );
           $logueo = $db->logger("Creacion de documentacion institucional");
           $rta['err'] = 0;
           $rta['status'] = "success";
           $rta['msg'] = "El documento se ha creado!";
-        }else{
-          $rta['err'] = 1;
-          $rta['status'] = "error";
-          $rta['msg'] = "Hubo un error al mover la imagen";
-        }
       }else{
         $rta['err'] = 2;
         $rta['status'] = "error";
@@ -133,10 +127,19 @@ class Institucional
     $datos = array_merge($request->getQueryParams(),$request->getParsedBody());
     $ide = $datos['idinstitucional'];
     $condition = array('idinstitucional' => $ide);
+    switch ($datos['categoria']) {
+        case 'Del agro':$categoria = 'aa/';break;
+        case 'De la construcción':$categoria = 'ca/';break;
+        case 'Enfermedades profesionales':$categoria = 'ea/';break;
+        case 'Leyes generales':$categoria = 'ga/';break;
+        case 'De la mineria':$categoria = 'ma/';break;
+        case 'Protocolos':$categoria = 'pa/';break;
+        case 'Servicios de salud y seguridad':$categoria = 'sa/';break;
+      }
     if($sess['iduser']){
       $delete = $db->delete("institucional", $condition);
       if($delete){
-        $delete = unlink('../../../assets/pdf/' . $ide .'.pdf');
+        $delete = unlink('../../../assets/pdf/'.$categoria.'/' . $ide .'.pdf');
         $this->logger->addInfo("Eliminacion de documentacion institucional | ".$sess["nombuser"] );
       }
     }

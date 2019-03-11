@@ -24,7 +24,7 @@
 		</div>
 		<div class="col s6">
 			<mat-card class="center-align">
-				<img mat-card-image *ngIf="!pdf" class="img-institucional" [src]="pathPdf">
+				<img mat-card-image *ngIf="!pdf" [ngClass]="{'opaca':!pdf}" class="img-institucional" [src]="pathPdf">
 				<ng-container *ngIf="pdf">
 					<img mat-card-image class="img-institucional" src="{{ pathPdf }}" (click)="clickPdf($event)">
 				</ng-container>

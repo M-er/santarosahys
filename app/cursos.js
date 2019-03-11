@@ -5,9 +5,9 @@ app.controller('cursosCtrl', function ($scope, $q, $http) {
 		$scope.cursos = [
 			{'titulo':'Reconocimiento y prevención de riesgos laborales', 'path':'reconocimiento'},
 			{'titulo':'Normativa vigente de aplicación.', 'path':'normativa'},
-			{'titulo':'Riego eléctrico.', 'path':'relectrico'},
+			{'titulo':'Riesgo eléctrico.', 'path':'relectrico'},
 			{'titulo':'Riesgo mecánico', 'path':'rmecanico'},
-			{ 'titulo': 'Riesgo de incendio y explosiones', 'path':'rincendio'},
+			{'titulo': 'Riesgo de incendio y explosiones', 'path':'rincendio'},
 			{'titulo':'Elementos de protección personal', 'path':'epp'},
 		];
 	};
@@ -21,7 +21,7 @@ function init() {
 /*
 Reconocimiento y prevención de riesgos laborales
 Normativa vigente de aplicación.
-Riego eléctrico.
+Riesgo eléctrico.
 Riesgo mecánico
 Riesgo de incendio y explosiones
 Elementos de protección personal

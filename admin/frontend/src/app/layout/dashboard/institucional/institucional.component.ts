@@ -117,7 +117,7 @@ export class DialogoInstitucional {
   cambiaPdf = false;
   pdf = null;
   pdfU = null;
-  pathPdf = '/assets/img/nopdf.png';
+  pathPdf = '/assets/img/pdf.png';
   categorias: any[] = [
     {id: 1, titulo:'Del agro', min:'aa'},
     {id: 2, titulo:'De la construcción', min:'ca'},
@@ -171,7 +171,6 @@ export class DialogoInstitucional {
       this.cambiaPdf = true; 
     } else {
       this.pdf = null;
-      this.pathPdf = '/assets/img/nopdf.png'; 
       }
   }
 
@@ -179,7 +178,6 @@ export class DialogoInstitucional {
     this.utilService.leeArchivo(ev.target, 'dataurl', () => {
       this.utilService.notification('Error al cargar la pdf');
     }).then(result => {
-      this.pathPdf = '/assets/img/pdf.png';
       this.pdf = result;
       this.pdfU = ev.target.files[0];
     });

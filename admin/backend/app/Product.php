@@ -84,15 +84,9 @@ class Product
             $basename = $prodId;
             $filename = sprintf('%s.%0.8s', $basename, $extension);
             $move = $uploadedFile->moveTo($directory.$filename);
-            if($move){
-              $rta['err'] = 0;
-              $rta['status'] = "success";
-              $rta['msg'] = "El producto se ha creado!";
-            }else{
-              $rta['err'] = 1;
-              $rta['status'] = "error";
-              $rta['msg'] = "Hubo un error al mover la imagen";
-            }
+            $rta['err'] = 0;
+            $rta['status'] = "success";
+            $rta['msg'] = "El producto se ha creado!";
           }else{
             $rta['err'] = 2;
             $rta['status'] = "error";
@@ -104,6 +98,7 @@ class Product
             unset($datos['idprod']);
             $result = $db->update('producto', $datos, $condition);
             if($result){
+              $this->logger->addInfo("Creacion de producto | ".$sess["nombuser"] );
               $logueo = $db->logger("Actualizacion de producto");
               $rta['err'] = 0;
               $rta['status'] = "success";
@@ -126,12 +121,13 @@ class Product
         if($sess['iduser']){
           $delete = $db->delete("producto", $condition);
           $this->logger->addInfo("Eliminacion de producto | ".$sess["nombuser"] );
+          $deleteF = unlink('../../../assets/productos/'. $ide .'/'. $ide .'.jpg');
         }
-        if($delete){
+        if($delete && $deleteF){
           $logueo = $db->logger("Eliminacion de producto");
           $rta['err'] = "0";
           $rta['status'] = "success";
-          $rta['msg'] = "La producto ha sido eliminado.";
+          $rta['msg'] = "El producto ha sido eliminado.";
         }else{
           $rta['err'] = 1;
           $rta['status'] = "error";

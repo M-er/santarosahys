@@ -1,1 +1,15 @@
 admin/backend/logs/*
+
+admin/frontend/node_modules
+admin/frontend/projects
+admin/frontend/src/environments/environment.ts
+
+backend/vendor
+backend/logs/*
+backend/src/dbconfig.php
+
+assets/cursos/*
+assets/pdf/*
+assets/publicaciones/*
+assets/productos/*
+assets/servicios/*

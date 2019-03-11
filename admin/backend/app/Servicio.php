@@ -82,16 +82,10 @@ class Servicio{
         $basename = $servicioId;
         $filename = sprintf('%s.%0.8s', $basename, $extension);
         $move = $uploadedFile->moveTo($directory.$filename);
-        if($move){
-          $this->logger->addInfo("Creacion de servicio | ".$sess["nombuser"] );
-          $rta['err'] = 0;
-          $rta['status'] = "success";
-          $rta['msg'] = "El servicio se ha creado!";
-        }else{
-          $rta['err'] = 1;
-          $rta['status'] = "error";
-          $rta['msg'] = "Hubo un error al mover la imagen";
-        }
+        $this->logger->addInfo("Creacion de servicio | ".$sess["nombuser"] );
+        $rta['err'] = 0;
+        $rta['status'] = "success";
+        $rta['msg'] = "El servicio se ha creado!";
       }else{
         $rta['err'] = 2;
         $rta['status'] = "error";
@@ -125,8 +119,9 @@ class Servicio{
     if($sess['iduser']){
       $delete = $db->delete("servicio", $condition);
       $this->logger->addInfo("Eliminacion de servicio | ".$sess["nombuser"] );
+      $deleteF = unlink('../../../assets/servicios/'. $ide .'/'. $ide .'.jpg');
     }
-    if($delete){
+    if($delete && $deleteF){
       $rta['err'] = "0";
       $rta['status'] = "success";
       $rta['msg'] = "El servicio ha sido eliminado.";

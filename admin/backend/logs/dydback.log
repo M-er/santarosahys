@@ -103,3 +103,36 @@
 [2019-03-09 09:01:27] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"315641a"}
 [2019-03-09 09:53:42] dyd-backend-app.INFO: Eliminacion de servicio | mrivas [] {"uid":"d5bdff8"}
 [2019-03-09 10:10:03] dyd-backend-app.INFO: Eliminacion de publicacion | mrivas [] {"uid":"a491917"}
+[2019-03-11 08:05:24] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"d4db6a4"}
+[2019-03-11 08:05:24] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"feee399"}
+[2019-03-11 08:18:52] dyd-backend-app.INFO: Ingreso | mrivas [] {"uid":"40bacec"}
+[2019-03-11 08:35:52] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"bdeabb5"}
+[2019-03-11 08:39:42] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"41a89e6"}
+[2019-03-11 08:49:38] dyd-backend-app.INFO: Eliminacion de documentacion institucional | mrivas [] {"uid":"4fbfd57"}
+[2019-03-11 09:46:23] dyd-backend-app.INFO: Ingreso | djuarez [] {"uid":"bc1b898"}
+[2019-03-11 09:47:23] dyd-backend-app.INFO: Ingreso | djuarez [] {"uid":"789bedb"}
+[2019-03-11 10:00:13] dyd-backend-app.INFO: Ingreso | derrecalde [] {"uid":"b4a4b6f"}
+[2019-03-11 10:02:55] dyd-backend-app.INFO: Creacion de documentacion institucional | derrecalde [] {"uid":"f86af85"}
+[2019-03-11 10:03:05] dyd-backend-app.INFO: Eliminacion de documentacion institucional | derrecalde [] {"uid":"b26b1ea"}
+[2019-03-11 10:08:35] dyd-backend-app.INFO: Creacion de servicio | derrecalde [] {"uid":"6781a71"}
+[2019-03-11 10:08:54] dyd-backend-app.INFO: Creacion de curso | derrecalde [] {"uid":"b859e46"}
+[2019-03-11 10:44:49] dyd-backend-app.INFO: Eliminacion de documentacion institucional | derrecalde [] {"uid":"241107f"}
+[2019-03-11 10:44:50] dyd-backend-app.INFO: Eliminacion de documentacion institucional | derrecalde [] {"uid":"49b6786"}
+[2019-03-11 10:44:53] dyd-backend-app.INFO: Eliminacion de producto | derrecalde [] {"uid":"a8096b3"}
+[2019-03-11 10:44:54] dyd-backend-app.INFO: Eliminacion de producto | derrecalde [] {"uid":"ae874d4"}
+[2019-03-11 10:44:57] dyd-backend-app.INFO: Eliminacion de servicio | derrecalde [] {"uid":"d824193"}
+[2019-03-11 10:44:57] dyd-backend-app.INFO: Eliminacion de servicio | derrecalde [] {"uid":"4fb0e57"}
+[2019-03-11 10:45:00] dyd-backend-app.INFO: Eliminacion de curso | derrecalde [] {"uid":"e3f45ba"}
+[2019-03-11 10:45:01] dyd-backend-app.INFO: Eliminacion de curso | derrecalde [] {"uid":"55b429d"}
+[2019-03-11 10:45:02] dyd-backend-app.INFO: Eliminacion de curso | derrecalde [] {"uid":"d333c0f"}
+[2019-03-11 10:45:04] dyd-backend-app.INFO: Eliminacion de publicacion | derrecalde [] {"uid":"f91e32d"}
+[2019-03-11 10:45:05] dyd-backend-app.INFO: Eliminacion de publicacion | derrecalde [] {"uid":"12fe91c"}
+[2019-03-11 11:02:09] dyd-backend-app.INFO: Creacion de documentacion institucional | derrecalde [] {"uid":"f78cab5"}
+[2019-03-11 11:02:43] dyd-backend-app.INFO: Creacion de servicio | derrecalde [] {"uid":"d5b2161"}
+[2019-03-11 11:02:58] dyd-backend-app.INFO: Creacion de curso | derrecalde [] {"uid":"fc185b6"}
+[2019-03-11 11:03:12] dyd-backend-app.INFO: Creacion de publicacion | derrecalde [] {"uid":"b9de9c0"}
+[2019-03-11 11:03:47] dyd-backend-app.INFO: Eliminacion de documentacion institucional | derrecalde [] {"uid":"b3d73fe"}
+[2019-03-11 11:04:20] dyd-backend-app.INFO: Eliminacion de producto | derrecalde [] {"uid":"1015518"}
+[2019-03-11 11:06:05] dyd-backend-app.INFO: Eliminacion de servicio | derrecalde [] {"uid":"fe684f3"}
+[2019-03-11 11:07:04] dyd-backend-app.INFO: Eliminacion de curso | derrecalde [] {"uid":"f57a9a5"}
+[2019-03-11 11:07:16] dyd-backend-app.INFO: Eliminacion de publicacion | derrecalde [] {"uid":"73fd24c"}

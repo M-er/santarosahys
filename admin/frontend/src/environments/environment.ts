@@ -1,17 +1,13 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
     production: false,
-    baseUrl: 'http://localhost/stahys/admin/backend/public/',
-    publicacionesUrl: 'http://localhost/stahys/assets/publicaciones/',
     pdfUrl: 'http://localhost/stahys/assets/pdf/',
-    usuariosUrl: 'http://localhost/stahys/assets/img/usuarios/',
-    imgUrl: 'http://localhost/stahys/admin/frontend/src/assets/img/',
+    cursosUrl: 'http://localhost/stahys/assets/cursos/',
+    baseUrl: 'http://localhost/stahys/admin/backend/public/',
     productosUrl: 'http://localhost/stahys/assets/productos/',
     serviciosUrl: 'http://localhost/stahys/assets/servicios/',
-    cursosUrl: 'http://localhost/stahys/assets/cursos/',
+    usuariosUrl: 'http://localhost/stahys/assets/img/usuarios/',
+    imgUrl: 'http://localhost/stahys/admin/frontend/src/assets/img/',
+    publicacionesUrl: 'http://localhost/stahys/assets/publicaciones/',
 };
 
 /*

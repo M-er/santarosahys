@@ -30,6 +30,9 @@ $app->group('/hojeador', function () use ($app) {
   $app->post('/institucional', 'institucionales:hojeador');
 });
 
+/* * * * * Acciones * * * * */
+$app->get('/acciones', "acciones:getAll");
+
 /* * * * * Usuarios * * * * */
 $app->post('/usuario/s', "usuario:save");
 $app->get('/usuario/me', "usuario:getMe");
@@ -39,8 +42,6 @@ $app->delete('/usuarios/delete/{iduser}', "usuario:delete");
 /* * * * * Productos * * * * */
 $app->get('/productos/all', "productos:getAll");
 $app->get('/producto/{{id}}', "producto:getOne");
-/* * * * * Acciones * * * * */
-$app->get('/acciones/all', "logueador:getAcc");
 /* * * * * Servicios * * * * */
 $app->get('/servicios/all', "servicios:getAll");
 /* * * * * Cursos * * * * */

@@ -81,17 +81,11 @@ class Curso
         $basename = $cursoId;
         $filename = sprintf('%s.%0.8s', $basename, $extension);
         $move = $uploadedFile->moveTo($directory.$filename);
-        if($move){
-          $this->logger->addInfo("Creacion de curso | ".$sess["nombuser"] );
-          $logueo = $db->logger("Creacion de curso");
-          $rta['err'] = 0;
-          $rta['status'] = "success";
-          $rta['msg'] = "El curso se ha creado!";
-        }else{
-          $rta['err'] = 1;
-          $rta['status'] = "error";
-          $rta['msg'] = "Hubo un error al mover la imagen";
-        }
+        $this->logger->addInfo("Creacion de curso | ".$sess["nombuser"] );
+        $logueo = $db->logger("Creacion de curso");
+        $rta['err'] = 0;
+        $rta['status'] = "success";
+        $rta['msg'] = "El curso se ha creado!";
       }else{
         $rta['err'] = 2;
         $rta['status'] = "error";
@@ -124,8 +118,9 @@ class Curso
     if($sess['iduser']){
       $delete = $db->delete("curso", $condition);
       $this->logger->addInfo("Eliminacion de curso | ".$sess["nombuser"] );
+      $deleteF = unlink('../../../assets/cursos/'. $ide .'/'. $ide .'.jpg');
     }
-    if($delete){
+    if($delete && $deleteF){
       $logueo = $db->logger("Eliminacion de curso");
       $rta['err'] = "0";
       $rta['status'] = "success";

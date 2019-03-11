@@ -11,12 +11,8 @@
 input[type="file"] {
 	display: none;
 }
-.example-headers-align .mat-expansion-panel-header-title,
-.example-headers-align .mat-expansion-panel-header-description {
-  flex-basis: 0;
-}
-
-.example-headers-align .mat-expansion-panel-header-description {
-  justify-content: space-between;
-  align-items: center;
+.opaca{
+  opacity: 5;
+  filter: grayscale(100%);
+  transition: color .2s filter easy-in-out, opacity .2s easy-in-out;
 }
