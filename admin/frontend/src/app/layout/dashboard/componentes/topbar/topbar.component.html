@@ -2,7 +2,7 @@
 	<button class="menu-toggle" mat-icon-button (click)="toggleSidenav()">
 		<mat-icon>menu</mat-icon>
 	</button>
-	Sta Rosa H&S laboral
+	<img style="max-width: 3em;" src="/assets/img/logoS.png" alt="Logo Santa Rosa Higiene y seguridad, dibujo de hombre con casco">
 	<div class="settings">
 		<button tabindex="-1" mat-icon-button [matMenuTriggerFor]="menu">
 			<i class="material-icons">notifications</i>
@@ -19,7 +19,6 @@
 	</div>
 </mat-toolbar>
 <mat-menu #menu="matMenu" overlapTrigger="false" xPosition="before">
-	<button disabled mat-menu-item>Nombre</button>
-	<button mat-menu-item>Administración</button>
+	<button disabled mat-menu-item>{{nombre}}</button>
 	<button (click)="logout()" mat-menu-item>Cerrar sesión</button>
 </mat-menu>

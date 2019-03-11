@@ -1,7 +1,4 @@
 <h1 mat-dialog-title>Creacion de curso</h1>
-<div class="row">
-	<!-- <mat-slide-toggle color="primary" [(ngModel)]="habilitado">Visible</mat-slide-toggle> -->
-</div>
 <div style="padding: 1em;" mat-dialog-content>
 	<div class="row">
 		<div class="col s6">
@@ -14,12 +11,12 @@
 			</mat-card>
 			<mat-card>
 				<mat-card-content>
-					<angular-editor [(ngModel)]="textohtml"></angular-editor>
+					<angular-editor [config]="editorConfig" name="editorAng" [(ngModel)]="textohtml"></angular-editor>
 				</mat-card-content>
 			</mat-card>
 		</div>
 		<div class="col s6">
-			<mat-card class="example-card center-align">
+			<mat-card class="center-align">
 				<img mat-card-image *ngIf="!imagen" class="img-curso" [src]="path">
 				<ng-container *ngIf="imagen">
 					<img mat-card-image class="img-curso" src="{{ imagen }}" (click)="clickImagen($event)">

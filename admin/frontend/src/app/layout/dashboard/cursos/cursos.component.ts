@@ -6,6 +6,7 @@ import { FocusNextDirective } from '@app/shared';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '@env';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'tr-cursos',
@@ -37,7 +38,7 @@ export class CursosComponent implements OnInit {
         { ancho: 15, def: 'idcurso', nombre: 'ID.', tipo: 'texto' },
         { ancho: 25, def: 'titulo', nombre: 'Titulo', tipo: 'texto' },
         { ancho: 25, def: 'path', nombre: 'Path', tipo: 'imagen' },
-        { ancho: 15, def: 'habilitado', nombre: 'Habilitado', tipo: 'numero' },
+        { ancho: 15, def: 'habilitado', nombre: 'Habilitado', tipo: 'texto' },
         { ancho: 10, def: 'usuario', nombre: 'Usuario creador', tipo: 'texto' },
         { ancho: 10, def: 'acciones', nombre: 'Acciones', tipo: 'texto' },
       ],
@@ -50,13 +51,13 @@ export class CursosComponent implements OnInit {
       modificarDatos: (datos) => {
         datos.forEach(element => {
           switch(element.user_iduser){
-            case '3':
+            case '1':
             element.usuario = "mrivas";
             break;
-            case '4':
+            case '2':
             element.usuario = "djuarez";
             break;
-            case '6':
+            case '3':
             element.usuario = "derrecalde";
             break;
           }
@@ -104,7 +105,7 @@ export class CursosComponent implements OnInit {
 
 })
 export class DialogoCurso {
-  path = 'img/noimage.png';
+  path = '/assets/img/nocurso.png';
   titulo = null;
   user_iduser = 0;
   textohtml = null;
@@ -163,5 +164,13 @@ export class DialogoCurso {
       this.imagenU = ev.target.files[0];
     });
   }
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '10rem',
+    minHeight: '5rem',
+    placeholder: 'Ingrese el texto del curso',
+    translate: 'no'
+  };
 }
 

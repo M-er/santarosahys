@@ -1,7 +1,4 @@
 <h1 mat-dialog-title>Creacion de publicacion</h1>
-<div class="row">
-<mat-slide-toggle color="primary" [(ngModel)]="habilitado" >Visible</mat-slide-toggle>
-</div>
 <div style="padding: 1em;" mat-dialog-content>
     <mat-accordion class="example-headers-align">
         <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
@@ -34,7 +31,7 @@
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="row center-align">
-                <mat-card class="example-card center-align">
+                <mat-card class="center-align">
                     <img mat-card-image *ngIf="!imagen" class="img-noticia" [src]="'assets/' + path">
                     <ng-container *ngIf="imagen">
                         <img mat-card-image class="img-noticia" src="{{ imagen }}" (click)="clickImagen($event)">
@@ -69,7 +66,7 @@
                     <mat-icon>description</mat-icon>
                 </mat-panel-description>
             </mat-expansion-panel-header>
-            <angular-editor [(ngModel)]="textohtml"></angular-editor>
+            <angular-editor [config]="editorConfig" name="editorAng" [(ngModel)]="textohtml"></angular-editor>
             <mat-action-row>
                 <button mat-button color="warn" (click)="prevStep()">Volver a imágen</button>
             </mat-action-row>
@@ -77,6 +74,7 @@
     </mat-accordion>
 </div>
 <div mat-dialog-actions>
+    <mat-checkbox [(ngModel)]="habilitado" name="habilitado" color="primary">Habilitado </mat-checkbox>
     <button mat-button color="primary" (click)="cancelar()">Cancelar</button>
     <button mat-button color="accent" (click)="guardar()" cdkFocusInitial>Guardar</button>
 </div>

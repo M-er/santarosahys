@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 	styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
-
+	nombre: string;
 	constructor(
 		private dashboardService: DashboardService,
 		private utilService: UtilService,
@@ -18,8 +18,11 @@ export class TopbarComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
+	setTimeout(() => {
+			this.nombre = this.dashboardService.dameNombre();
+		}, 1);
 	}
-
+	
 	toggleSidenav() {
 		this.dashboardService.onSidenavToggle.emit();
 	}

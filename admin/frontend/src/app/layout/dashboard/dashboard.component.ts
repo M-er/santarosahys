@@ -10,7 +10,6 @@ import { environment } from '@env';
 	styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
 	constructor(
 		private dashboardService: DashboardService,
 		private router: Router,
@@ -36,6 +35,8 @@ export class DashboardComponent implements OnInit {
 				this.utilService.notification('Sesión cerrada');
 				this.utilService.setLS('logged', false);
 				this.router.navigate(['/auth/login']);
+			}else{
+				this.dashboardService.setNombre(data.nombuser);
 			}
 		})
 	}

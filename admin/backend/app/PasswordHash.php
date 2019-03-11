@@ -1,7 +1,7 @@
 <?php
 namespace App;
 /**
-* 
+*
  Clase PasswordHash encripta y desencripta las password
 *
 **/
@@ -25,6 +25,9 @@ class PasswordHash {
     public static function check_password($hash, $password) {
         $full_salt = substr($hash, 0, 29);
         $new_hash = crypt($password, $full_salt);
+        error_log("Comparo: ");
+        error_log($new_hash);
+        error_log($hash);
         return ($hash == $new_hash);
     }
 }

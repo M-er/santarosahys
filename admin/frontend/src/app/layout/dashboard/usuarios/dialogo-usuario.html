@@ -22,7 +22,7 @@
 
 		</div>
 		<div class="col s6">
-			<mat-card class="example-card center-align">
+			<mat-card class="center-align">
 				<img mat-card-image *ngIf="!imagen" class="img-usuario" [src]="path">
 				<ng-container *ngIf="imagen">
 					<img mat-card-image class="img-usuario" src="{{ imagen }}" (click)="clickImagen($event)">

@@ -1,6 +1,7 @@
 .img-servicio{
     cursor: pointer;
-    width: 12em;
+    height: 10em;
+    width: auto;
 }
 .icono-img {
     vertical-align: middle;
@@ -10,13 +11,4 @@
 
 input[type="file"] {
 	display: none;
-}
-.example-headers-align .mat-expansion-panel-header-title,
-.example-headers-align .mat-expansion-panel-header-description {
-  flex-basis: 0;
-}
-
-.example-headers-align .mat-expansion-panel-header-description {
-  justify-content: space-between;
-  align-items: center;
 }
